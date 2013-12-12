@@ -21,13 +21,138 @@
 \maketitle
 \tableofcontents
 
-
-\chapter{Einleitung}
+\section{Abstract}
 	
 \chapter{Erklärung}
-	
+	\section{Wofür steht Space-Based Computing?}
+		Space computing has its origin in parallel programming [6]. Here, a space is a place where data can be shared by multiple components. A component can easily put a piece of data to be shared with others into a space (“write”). Any number of components can read a piece of data without removing it from the space (“read”); a component may read the same piece of data even multiple times.	There is also a variant of reading data that removes data from the space once it is read (destructive read – referred too as “take”). 
+		
+		A space stores data persistently such that it is not lost when the environment
+		realizes an outage. The data model supported by a space is that of a tuple, which
+		is why a corresponding space is also referred to as tuple space (“TSpace” [15]).
+		In a TSpace, data to be read (or taken) is identified by a template, i.e. by
+		specifying values in certain slots of a
+		tuple to be retrieved while other slots are
+		left open; if more than one tuple will match a template only one will be returned
+		from the space. To support more sophisticated applications, advanced features
+		for manipulating tuples in a space are defined (e.g. [12]). Finally, matching of
+		tuples to be retrieved from a space can be supported by associating semantics
+		with each tuple (so-called “sTuples” [11]). 
+		
+		
+		
+		
+		Similar to the Linda coordination model, SB
+		C is mainly a data-driven coordination
+		model, but can be adapted and used accordin
+		g to control-driven c
+		oordination models as
+		well (section 4.3). As shown in Figure 18,
+		application components running on different
+		physical nodes coordinate each other by
+		means of writing, reading, and removing
+		(section 4.2.1) shared structured entries from a logically central space entity. SBC is a
+		logical central architectural component a
+		nd does not specify where it is physically
+		located
+		
+		An implementation of the SBC architectural
+		style can be deployed on a physical central
+		server, or run on several nodes (Figure 19 and Figure 20, part 5). In the latter case,
+		internal mechanisms have to make sure, that the shared data structures on the
+		participating nodes are synchronized by ta
+		king into account use case specific
+		requirements
+		
+		For instance, a strategy may define that all node
+		s have to host the same consistent data
+		set. From the application co
+		mponent’s point of view ther
+		e is no client/server or P2P
+		architectural style to worry about. The appl
+		ication component has a specific role in a
+		coordination policy (section 4.1.1) the component
+		is part of and acts according to which
+		has been defined explicitly by higher business goals or autonomously. The used
+		coordination policy specifies the component’s
+		role, whether it is a client requesting
+		information or a server responding with data, or both. In the following, this thesis refers
+		to the term “space” in the same
+		way as to SBC. In the next
+		sections, SBC’s coordination
+		and agility capabilities are going to be de
+		scribed briefly by means of Figure 20, and in
+		more detail in section 4.2.4. 
+		
+		Distributed application components (Figure
+		20, part 1) access the space by means of
+		read
+		,
+		take
+		, and
+		destroy
+		operations if they want to retr
+		ieve and/or remove data, or by
+		means of
+		write
+		operations in case of a
+		dding data (section 4.2.1). The
+		notify
+		operation
+		allows application components to be
+		notified about changes in the space.
+		Data placed in the space is stored in a
+		structured way according to exchangeable
+		coordination policies (Figure 20, part 3). Each
+		policy is responsible
+		to structure and
+		maintain data in the space. Several coordi
+		nation policies may exist at the same time,
+		thus the same data may be structured di
+		fferently, depending on the policy looking at. In
+		its simplest form, such a policy is similar
+		to the Tuple Space coordination model that
+		uses template matching on structured tupl
+		es. Other policies may involve FIFO, LIFO,
+		keys, geo-coordinates, or even more complex
+		coordination like the ma
+		rket place pattern.
+		Writing data using the last pol
+		icy could mean e.g., to announce a new offer about which
+		other application components
+		are notified in near-time.
+		The efficiency of coordinating application
+		components mainly rests upon the efficiency
+		of the coordination policy. Internal mech
+		anisms have to allow access of multiple
+		concurrent operations while preserving
+		consistency. The way of managing
+		synchronizations and their gra
+		nularity depends on the repr
+		esented policy and therefore
+		requires careful trade-off analyzes. 
+		
+		
+		\subsection{Unterschied zwischen SBC und Cloudcomputing}
+			Cloud computing refers to the hosting of applications on a large data center, that allows the application to use as much of the provided computing power as needed for any given time. Different cloud computing providers (e.g. Google or Amazon) provide different APIs for the hosted applications.
+			
+			Space based computing on the other hand, is not so much about the hosting, but more about the communication of components of a distributed system. The "space" is basically a centralized data channel through which distributed components publish and consume data. This is supposed to simplify distributed application concerns (transaction handling, reliable communication, etc.) when components do not need to interact directly with each other.
+			
+			An application running on a cloud platform is (almost certainly) accessible via the Internet. That is not necessarily the case with space based computing.
+			http://stackoverflow.com/questions/3098662/what-is-the-difference-between-space-based-computing-and-cloud-computing
+			(Nicht als Quelle angeben/Verwenden!)
+			
+	\section{Einsatzbereiche}
+		
 \chapter{Grundlegende Prinzipien}
-	
+	\section{Space-Based Computing Paradigmen}
+		\subsection{Tuple Spaces}
+			
+		
+	\section{Mapping}
+		
+	\section{EAI}
+		
 \chapter{Im genaueren betrachtet}
 	
 \chapter{Namhafte Implementierungen}
