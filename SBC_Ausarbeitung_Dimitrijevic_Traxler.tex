@@ -192,7 +192,7 @@
 		
 		\section{Reliable Message}
 			
-			Reliable Message verhält sich wie Tuple Space computing. Nur das man hier nicht von Tuples spricht sondern von Messages.  Die Reliable Message Technologie geht von mehreren Channels aus die die geteilten Daten beinhalten und jeder dieser Channel kann von einem einem oder mehreren Server „unterstützt“ werde d.H.  das die geteilten Daten auf einem oder mehreren Servern liegen und damit abgesichert werden können. 
+			Reliable Message verhält sich wie Tuple Space computing. Nur das man hier nicht von Tuples spricht sondern von Messages.  Die Reliable Message Technologie geht von mehreren Channels aus die die geteilten Daten beinhalten und jeder dieser Channel kann von einem oder mehreren Server „unterstützt“ werde d.H.  das die geteilten Daten auf einem oder mehreren Servern liegen und damit abgesichert werden können. 
 		
 		\section{Peer-to-Peer Architekturen}
 			
@@ -242,32 +242,32 @@
 		
 		\section{Corso}
 			Corso( Co-ORdinated Shared Objects) basiert auf Forschungsarbeiten der Technischen Uni Wien.
-			Software Entwicklung in heterogenen verteilten Systemen bringt immer zusätzlich Komplexität.
-			•	Lokatoin: Addressierung und Lokalisierung von Ressourcen
-			•	Replikation: Verwalten von Daten Kopien an dislozierten Orten
-			•	Transaktion: Synchronisationsmechanismen konkurrierender Zugriffe auf verteilte Ressourcen
-			•	Skalierbarjeit: Die Möglichkeit zur transparenten Erweiterung des Systems im Zuge von wachsenden Anforderungen und Belastung an das Gesamtsystem
-			•	Lastverteilung: Die faire und gleichmäßige Verteilung von Aufgaben an verteilte Komponenten
+			Software Entwicklung in heterogenen verteilten Systemen bringt immer zusätzlich Komplexität.\\
+			•	Lokatoin: Addressierung und Lokalisierung von Ressourcen\\
+			•	Replikation: Verwalten von Daten Kopien an dislozierten Orten\\
+			•	Transaktion: Synchronisationsmechanismen konkurrierender Zugriffe auf verteilte Ressourcen\\
+			•	Skalierbarjeit: Die Möglichkeit zur transparenten Erweiterung des Systems im Zuge von wachsenden Anforderungen und Belastung an das Gesamtsystem\\
+			•	Lastverteilung: Die faire und gleichmäßige Verteilung von Aufgaben an verteilte Komponenten\\
 			•	Fehlersicherheit:  Die kompensation aufallender Rechner und Persistzenz von flüchtigen Daten
-			Corso ist eine Middleware. Corso erleichtert die Addressierung und vereinfacht das arbeiten mit Spaces.
+			Corso ist eine Middleware. Corso erleichtert die Addressierung und vereinfacht das arbeiten mit Spaces.\\
 			
 			\subsection{Virtual shared Memory}
 				Ein Virtuals shared Memory stellt einen konzeptionell hohne Abstraktionslevel für den Datenaustasch in verteilten Systemen dar.  Es stellt einen Raum dar auf dem parallel verteilte Prozesse eine konsistente Sicht haben. Die verteilten Objekte werden für Speicherung von Informationen, Kommunikation, und Synchronisation von Prozessen verwendet.
 		\section{XVSM}
-		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware technology die Daten in “Spaces” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die ausfallswahrscheinlichkeit der Daten reduziert.
+		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware technology die Daten in “Spaces” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die Ausfallwahrscheinlichkeit der Daten reduziert.
 		
 		XVSM ist keine middleware sondern eine technology die implementiert und verwendet werden kann.
-		Unterschied zum Linda(javaSpaces) ansatz ist, dass die Daten mit eintregen, coordinaten und containern leichter gefunden werden können.
+		Unterschied zum Linda(javaSpaces)Aansatz ist, dass die Daten mit eintregen, coordinaten und containern leichter gefunden werden können.
 		
 		
 		\section{TinySpaces}
 			Tinyspaces setzt auf das XVSM prinzip auf und benutzt das .Net Framework. Da es bei dem XVSM Prinzip noch nicht vollkommen mit allen Implementierungen kompatibel war erschuf man Tinyspaces. 
-			TinySpaces soll es erleichtern mit space based computing zu arbeiten. Da es unnötige schichten entfern. 
+			TinySpaces soll es erleichtern mit space based computing zu arbeiten. Da es unnötige schichten entfernt. 
 			TinySpaces nutzt die unterstützung von Contracts die sagen wie man ein bestimmtes Interface ansprechen soll.
 			Durch die Nutzung von Contracts ist es möglich die angesprochenen Componenten zu ändern. Da man bei der programmierung der Aplication darauf zielen sollte das Alle Componenten auf denn Contract aufbauen sollten.
 			TinySpaces setzt auf CAPI-1 auf damit sie denn wechsel von Componenten während der Laufzeit zu ändern.
 		\section{GSpaces}
-		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel aber benutzt diese auch mit Replikationsrichtlinien.  Bei einem Aufruf wird aber ein lokaler Aufrufshändler aufgerufen und dann wird nachgeschaut welche Operation ausfgeführt werden muss. Bei  einem aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager weitergeleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie herrscht wird dann einfach die Read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
+		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel, benutzt diese aber mit Replikationsrichtlinien.  Bei einem Aufruf wird ein lokaler Aufrufshändler aufgerufen und es wird nachgeschaut welche Operation ausgeführt werden muss. Bei  einem Aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager weitergeleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie herrscht wird dann einfach die Read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
 	
 \chapter{Conclusio}
 
