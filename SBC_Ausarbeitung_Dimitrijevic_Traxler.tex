@@ -29,115 +29,7 @@
 		Space-Based Computing (fortan SBC) hat seine Ursprünge im parallel programming, und stellt dabei hauptsächlich ein Datenorientiertes Modell zur Koordination dar. Wie aus dem Namen eindeutig hervorgeht handelt es sich hierbei um ein Modell welches auf 'Spaces' basiert. Ein Space ist hierbei gleichbedeutend mit einem (logischen) Ort auf welchem Daten von mehreren Komponenten geteilt verwendet werden. Diese Komponenten können im einfachsten Fall 'write', 'read' und 'take' Aktionen ausführen. Ein Write steht hierfür für das zur Verfügung Stellen eines neuen Datenteil an alle anderen Komponenten in diesem Space, ein Read für das Lesen von Daten ohne diese zu entfernen und ein Take für das Lesen und entfernen einer Datei aus dem Space, auch destructive read genannt. Im einfachsten Fall hat ein Space nun das Datenmodell eines Tuples.\\      Eine Hauptanforderung die an einen Space hier nun gestellt wird ist das persistente Aufbewahren aller Daten die sich in ihm befinden, auch bei Systemausfällen. Wie das SBC modelliert und implementiert wird kann sehr stark variieren, je denn gegebenen Anforderungen und Wünschen entsprechend. Was hierbei vor allem variiert ist die Zahl der Geräte auf dem der Space implementiert ist und die Zahl der Geräte die auf diesen Space zugreifen, diese Zahlen sind prinzipiell, wenn nicht durch den Anwendungsfall anders umgesetzt, voneinander unabhängig und befinden sich jeweils im Bereich von 1 bis n. \\   Das SBC-System stellt hierbei eine logische zentrale Einheit dar welche nicht spezifiziert wo sie genau überall Physikalisch vorhanden ist. Der Ort wo eine Datei schlussendlich wirklich physikalisch abgespeichert wird kann dabei nach verschiedensten Methoden ausgewählt werden, in der simpelsten Form wird das selbe Prinzip wie bei Tuples angewendet %TODO Nachschaun
 		oder es werden andere Prinzipien verwendet wie FIFO, LIFO, keys, geo-coordinates oder noch kompliziertere, auch das ist vom gegebenen Anwendungsfall abhängig.
 		\cite{Steinmetz2005}
-		
-		
-%		Space computing has its origin in parallel programming [6]. Here, a space is a place where data can be shared by multiple components. A component can easily put a piece of data to be shared with others into a space (“write”). Any number of components can read a piece of data without removing it from the space (“read”); a component may read the same piece of data even multiple times.	There is also a variant of reading data that removes data from the space once it is read (destructive read – referred too as “take”). 
-		
-%		A space stores data persistently such that it is not lost when the environment
-%		realizes an outage. The data model supported by a space is that of a tuple, which
-%		is why a corresponding space is also referred to as tuple space (“TSpace” [15]).
-%		In a TSpace, data to be read (or taken) is identified by a template, i.e. by
-%		specifying values in certain slots of a
-%		tuple to be retrieved while other slots are
-%		left open; if more than one tuple will match a template only one will be returned
-%		from the space. To support more sophisticated applications, advanced features
-%		for manipulating tuples in a space are defined (e.g. [12]). Finally, matching of
-%		tuples to be retrieved from a space can be supported by associating semantics
-%		with each tuple (so-called “sTuples” [11]). 
-%		
-%		
-%		
-%		
-%		Similar to the Linda coordination model, SB
-%		C is mainly a data-driven coordination
-%		model, but can be adapted and used accordin
-%		g to control-driven c
-%		oordination models as
-%		well (section 4.3). As shown in Figure 18,
-%		application components running on different
-%		physical nodes coordinate each other by
-%		means of writing, reading, and removing
-%		(section 4.2.1) shared structured entries from a logically central space entity. SBC is a
-%		logical central architectural component a
-%		nd does not specify where it is physically
-%		located
-%		
-%		An implementation of the SBC architectural
-%		style can be deployed on a physical central
-%		server, or run on several nodes (Figure 19 and Figure 20, part 5). In the latter case,
-%		internal mechanisms have to make sure, that the shared data structures on the
-%		participating nodes are synchronized by ta
-%		king into account use case specific
-%		requirements
-%		
-%		For instance, a strategy may define that all node
-%		s have to host the same consistent data
-%		set. From the application co
-%		mponent’s point of view ther
-%		e is no client/server or P2P
-%		architectural style to worry about. The appl
-%		ication component has a specific role in a
-%		coordination policy (section 4.1.1) the component
-%		is part of and acts according to which
-%		has been defined explicitly by higher business goals or autonomously. The used
-%		coordination policy specifies the component’s
-%		role, whether it is a client requesting
-%		information or a server responding with data, or both. In the following, this thesis refers
-%		to the term “space” in the same
-%		way as to SBC. In the next
-%		sections, SBC’s coordination
-%		and agility capabilities are going to be de
-%		scribed briefly by means of Figure 20, and in
-%		more detail in section 4.2.4. 
-%		
-%		Distributed application components (Figure
-%		20, part 1) access the space by means of
-%		read
-%		,
-%		take
-%		, and
-%		destroy
-%		operations if they want to retr
-%		ieve and/or remove data, or by
-%		means of
-%		write
-%		operations in case of a
-%		dding data (section 4.2.1). The
-%		notify
-%		operation
-%		allows application components to be
-%		notified about changes in the space.
-%		Data placed in the space is stored in a
-%		structured way according to exchangeable
-%		coordination policies (Figure 20, part 3). Each
-%		policy is responsible
-%		to structure and
-%		maintain data in the space. Several coordi
-%		nation policies may exist at the same time,
-%		thus the same data may be structured di
-%		fferently, depending on the policy looking at. In
-%		its simplest form, such a policy is similar
-%		to the Tuple Space coordination model that
-%		uses template matching on structured tupl
-%		es. Other policies may involve FIFO, LIFO,
-%		keys, geo-coordinates, or even more complex
-%		coordination like the ma
-%		rket place pattern.
-%		Writing data using the last pol
-%		icy could mean e.g., to announce a new offer about which
-%		other application components
-%		are notified in near-time.
-%		The efficiency of coordinating application
-%		components mainly rests upon the efficiency
-%		of the coordination policy. Internal mech
-%		anisms have to allow access of multiple
-%		concurrent operations while preserving
-%		consistency. The way of managing
-%		synchronizations and their gra
-%		nularity depends on the repr
-%		esented policy and therefore
-%		requires careful trade-off analyzes. 
-		
+	
 		
 		\subsection{Unterschied zwischen SBC und Cloudcomputing}
 			Um nun der Verwechslung von SBC und Cloudcomputing vor zu Beugen sie hier nun gesagt, zu aller erst behandelt SBC lediglich die Daten und Cloudcomputing stellt noch viele weitere Ressourcen (wie zB. Rechenleistung) zur Verfügung. Auch zu Cloud-Storrage kann man abgrenzen, Cloud-Storrage behandelt nicht nur die interne Abspeicherung der Daten sondern auch vor allem wie diese dem Benutzer zur Verfügung gestellt und abstrahiert werden, bei SBC geht es hauptsächlich um die interene Verteilung und Kommunikation der Komponenten untereinander und stellt dabei einen Datenkanal zwischen den Komponenten des Spaces dar beziehungsweise zur Verfügung. 
@@ -206,7 +98,7 @@
 			
 		
 		
-		% Muss ich mir nochmal web services anschauen
+		%TODO Muss ich mir nochmal web services anschauen
 		Web-Service Technologie bietet eine 
 		"Virtuelle Komponenten-Modell" zur vereinheinfachung der 
 		heterogenenen Welt von Komponenten. Es  erlaubt es, bestehende Funktionalität zu nutzen 
@@ -254,8 +146,10 @@
 				\subsubsection{Chord Algorithmus}
 					
 					Der Chord Algorithmus legt alle möglichen hashwerte in einem Kries ab (beginnend mit 000.. und endend mit 999 bei dezimaler darstellung). Jede Komponente muss nun wissen wo sie die Datensätze findet für die sie selbst zuständig ist und eine gewisse Anzahl anderer Komponenten nach folgendem Schema:\\
-					"Each node maitains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least 2\^(i-1), i.e., successor (n+2\^(i-1)), where 1 <= i <= l... For example, te second finder of node N8 (8+2\^1=10) is node 10 and the third finder (8+2\^2=12) is node 15" Wobei zu beachten ist, node 15 für den Bereich der Nodes 11 bis 15 zuständig ist. %TODO Graphik aus Buch seite 96 einfügen
+					'Each node maitains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least $2^{i-1}$, i.e., successor $n+{2}^{i-1}$, where $1 <= i <= l$. For example, te second finder of node N8 $(8+2^1=10)$ is node 10 and the third finder $(8+2^2=12)$ is node 15 Wobei zu beachten ist, node 15 für den Bereich der Nodes 11 bis 15 zuständig ist. %TODO Graphik aus Buch seite 96 einfügen
 					\\
+					
+				\subsubsection{CAN Algorithmus}
 	
 \chapter{Namhafte Implementierungen}
 	\section{JavaSpaces}
