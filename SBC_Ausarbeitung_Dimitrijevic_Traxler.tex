@@ -98,7 +98,7 @@
 			
 		
 		
-		%TODO Muss ich mir nochmal web services anschauen
+		%TODO Muss ich mir nochmal web services anschauen. Referenzieren auf SOA ausarbeitung
 		Web-Service Technologie bietet eine 
 		"Virtuelle Komponenten-Modell" zur vereinheinfachung der 
 		heterogenenen Welt von Komponenten. Es  erlaubt es, bestehende Funktionalität zu nutzen 
@@ -146,7 +146,8 @@
 				\subsubsection{Chord Algorithmus}
 					
 					Der Chord Algorithmus legt alle möglichen hashwerte in einem Kries ab (beginnend mit 000.. und endend mit 999 bei dezimaler darstellung). Jede Komponente muss nun wissen wo sie die Datensätze findet für die sie selbst zuständig ist und eine gewisse Anzahl anderer Komponenten nach folgendem Schema:\\
-					'Each node maitains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least $2^{i-1}$, i.e., successor $n+{2}^{i-1}$, where $1 <= i <= l$. For example, te second finder of node N8 $(8+2^1=10)$ is node 10 and the third finder $(8+2^2=12)$ is node 15 Wobei zu beachten ist, node 15 für den Bereich der Nodes 11 bis 15 zuständig ist. %TODO Graphik aus Buch seite 96 einfügen
+					'Each node maintains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least $2^{i-1}$, i.e., successor $n+{2}^{i-1}$, where $1 <= i <= l$. For example, te second finder of node N8 $(8+2^1=10)$ is node 10 and the third finder $(8+2^2=12)$ is node 15 Wobei zu beachten ist, node 15 für den Bereich der Nodes 11 bis 15 zuständig ist. %TODO Graphik aus Buch seite 96 einfügen. Zitieren.
+					
 					\\
 					
 				\subsubsection{CAN Algorithmus}
