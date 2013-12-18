@@ -44,20 +44,18 @@
 \chapter{Grundlegende Prinzipien}
 	
 	\section{Space-Based Computing Paradigma}
+		Interaktionen sind bei SBC in 3 Teile geteilt 
+		\begin{itemize}
+			\item Zeit
+				\subitem Applikationen können jederzeit Daten Lesen und schreiben.
+			\item Space
+				\subitem Applikationen müssen nur auf den selben Space zugreifen um miteinander zu kommunizieren
+			\item Referenzierung
+				\subitem Applikation die miteinander Kommunizieren müssen nicht tatsächlich voneinander wissen.
+		\end{itemize}
+		Durch diese Aufteilung sind die Applikation tatsächlich voneinander unabhängig, ändert sich nun an einer Applikation etwas (Ort, Ausführungszeit etc.) so ist dies für die andere gänzlich irrelevant (abgesehen von sich ändernden Inhalt) solange sich der Space auf den beide zugreifen und über welchen sie Kommunizieren der gleiche bleibt. Auch wenn zu einem späteren Zeitpunkt weitere Applikation hinzugefügt werden, so ist das (erneut, ausgenommen Nachrichteninhalt) für die ersten beiden Applikation insofern irrelevant als das man an ihnen nichts ändern muss deswegen. Zu beachten ist jedoch dass so keine direkte Kommunikation mehr stattfindet und daher auch keine direkte Reaktion zu erwarten ist in der Regel. (Ausgenommen es werden notifies aus geschickt)
 		
-		\subsection{Decoupling of Interaction}
-			Interaktionen sind bei SBC in 3 Teile geteilt 
-			\begin{itemize}
-				\item Zeit
-					\subitem Applikationen können jederzeit Daten Lesen und schreiben.
-				\item Space
-					\subitem Applikationen müssen nur auf den selben Space zugreifen um miteinander zu kommunizieren
-				\item Referenzierung
-					\subitem Applikation die miteinander Kommunizieren müssen nicht tatsächlich voneinander wissen.
-			\end{itemize}
-			Durch diese Aufteilung sind die Applikation tatsächlich voneinander unabhängig, ändert sich nun an einer Applikation etwas (Ort, Ausführungszeit etc.) so ist dies für die andere gänzlich irrelevant (abgesehen von sich ändernden Inhalt) solange sich der Space auf den beide zugreifen und über welchen sie Kommunizieren der gleiche bleibt. Auch wenn zu einem späteren Zeitpunkt weitere Applikation hinzugefügt werden, so ist das (erneut, ausgenommen Nachrichteninhalt) für die ersten beiden Applikation insofern irrelevant als das man an ihnen nichts ändern muss deswegen. Zu beachten ist jedoch dass so keine direkte Kommunikation mehr stattfindet und daher auch keine direkte Reaktion zu erwarten ist in der Regel. (Ausgenommen es werden notifies aus geschickt)
-			
-			
+		
 		
 	\section{Mapping}
 		
