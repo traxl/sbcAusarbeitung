@@ -148,7 +148,6 @@
 					Der Chord Algorithmus legt alle möglichen hashwerte in einem Kries ab (beginnend mit 000.. und endend mit 999 bei dezimaler darstellung). Jede Komponente muss nun wissen wo sie die Datensätze findet für die sie selbst zuständig ist und eine gewisse Anzahl anderer Komponenten nach folgendem Schema:\\
 					'Each node maintains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least $2^{i-1}$, i.e., successor $n+{2}^{i-1}$, where $1 <= i <= l$. For example, te second finder of node N8 $(8+2^1=10)$ is node 10 and the third finder $(8+2^2=12)$ is node 15 Wobei zu beachten ist, node 15 für den Bereich der Nodes 11 bis 15 zuständig ist. %TODO Graphik aus Buch seite 96 einfügen. Zitieren.
 					
-					\\
 					
 				\subsubsection{CAN Algorithmus}
 	
@@ -191,9 +190,28 @@
 						
 			\subsection{Virtual shared Memory}
 			%zu ändern
-				Ein Virtuals shared Memory stellt einen konzeptionell hohne Abstraktionslevel für den Datenaustasch in verteilten Systemen dar.  Es stellt einen Raum dar auf dem parallel verteilte Prozesse eine konsistente Sicht haben. Die verteilten Objekte werden für Speicherung von Informationen, Kommunikation, und Synchronisation von Prozessen verwendet.
+			
+			Ein Virtual Shared Memory stellt einen freigegeben Datenraum für die Kommunikation und Zusammenarbeit von mehreren Autonomen System Komponenten zur Verfügung, auch genant Peers. Peers können ihre Anfragen in diesen Datenraum schreiben, als auch User und Nutzdaten, die für die Arbeit erfoderlich sind.
+			Das Konzept des Virtual Shared Memory ist aus dem Parallel Computings bereits bekannt und anerkannt.\\
+			Das Virtual Shared Memory Ansatz ermöglicht es autonomen Arbeitern miteinander zu im Virtuellen Datenraum zu interagieren.\\
+			Das heißt das alle arbeitenden Peers haben Zugriff auf die geteilten(verteilten) Daten in einem gut strukturiertem, sicheren, virtuellen Speicher.
+			 
+			
+			
+			  
+		
 		\section{XVSM}
-		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware technology die Daten in “Spaces” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die Ausfallwahrscheinlichkeit der Daten reduziert.
+		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware technology die Daten in “Spaces” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die Ausfallwahrscheinlichkeit der Daten reduziert.\\
+		
+		Ist ein Virtual Shared Memory dessen Funktionalitäten sehr leicht durch Software Entwicklern der durch die Verwendung von Aspekten erweitert werden kann. Man kann nicht davon ausgehen das eine Middleware alle Funktionalitäten bieten kann und man wird nicht ein Produkt nutzen das nicht die benötigten Funktionalitäten hat und man wird nicht gerne eine Middleware nutzen die überladen ist.\\
+		Mit XVSM kann man so Konfigurieren so, dass die gewünschten Funktionen hinzufügt werden(Pluggable Komponents) oder, wegnehmen wenn ungewünscht sind.(In der Graphik dargestellt durch die Gelben Elemente)\\
+		\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{./08570620af}
+\caption{}
+\label{fig:08570620af}
+\end{figure}
+
 		
 		Unterschied zum Linda(JavaSpaces)Ansatz ist, dass die Daten in Container gespeichert werden und nicht direkt in den Space und die Daten mit einträgen, coordinaten und containern leichter gefunden werden können.
 		XVSM integriert das Konzept von Peer-2-Peer Netzwerken um ein Verteiltes Geteilten Space zu erzeugen.
