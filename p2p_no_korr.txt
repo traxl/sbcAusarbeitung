@@ -1,0 +1,47 @@
+\section{Peer-to-Peer Architekturen}
+			
+			Peer-to-Peer (fortan p2p) Architekturen bieten nun ganz eigene Möglichkeiten aber auch Anforderungen an und für ein SBC System. P2p bedeutet Gleichheit aller Komponenten, mindestens insofern, als dass es keine bestimmenden und steuernden (Master) Komponenten gibt, alle Komponenten gleichgestellt sind. Wobei zu beachten ist, dass es nicht nur erlaubt, sonder erwünscht ist, wenn Unterschiede bezüglich zB. den Komponenten zur Verfügung stehenden Ressourcen berücksichtigt werden. 
+			
+			\subsection{Weshalb p2p bei SBC?}
+				
+				Ein (gutes) p2p System bietet vor allem die Möglichkeit einfach Komponenten hinzu zu fügen, heraus zu nehmen oder aus zu tauschen, was gerade für einen Space der nicht vollständig definiert sein muss einen guten Vorteil bieten kann. Durch eine p2p Lösung kann sehr oft hohe Flexibilität des Systems erreicht werden, hier sei nun gleich angemerkt, sollten die Anforderungen möglichst effiziente Nutzung von begrenzten oder klar definierten Ressourcen sein, so ist dies zu berücksichtigen und ein p2p Ansatz sehr wahrscheinlich nicht die beste Lösung. \\
+				Ein p2p System liefert einem außerdem den Vorteil, dass man bei sehr dynamischen Systemen nicht oder nur bedingt darauf achten muss, dass alle Komponenten Arten (zB. Master-Servant) in einem effizienten Gleichgewicht zueinander stehen da Prinzipiell alle Komponenten der selben Art entsprechen sollten.
+				
+			\subsection{P2p Arten/Routing}
+			
+				Die Arten von p2p Systemen kann man in der Regel dadurch unterscheiden wie das Routing innerhalb des Systems funktioniert, d.h. wie schafft es Komponente A mit Komponente B-Z Kontakt auf zu nehmen. Das Routing in (größeren) p2p Systemen ist entscheidend dafür wie skalierbar, effizient, sicher und ressourcenschonend es ist.
+				\\\\Prinzipiell kann man p2p Systeme in Unstrukturierte und Strukturierte Systeme unterteilen. Unstrukturierte Systeme stellen dabei den weit bekannteren Teil der Systeme und umfassen unter anderem Zentralisierte Systeme (zB. Napster), Pure p2p Systeme (zB. Gnutella 0.4) oder Hybride p2p Systeme (zB. Gnutela 0.6) wärend Strukturierte p2p Systeme beispielsweise mit Distributed-Hash-Tables realisiert werden können. %\footnote{\cite{Steinmetz2005}}
+				
+			\subsection{Unstrukturierte p2p Systeme}
+				\subsubsection{Zentralisiertes p2p}
+					
+					Zentralisiertes p2p ist nur bedingt ein tatsächliches p2p System. Es besteht zwar durchaus aus vielen Gleichberechtigten Komponenten (zb. Datenspeichereinheiten) welche die Kommunikation und Organisation selbstständig regeln, jedoch existiert hierbei ein zentraler Server bei welchem sich die Peers registrieren müssen und welcher den Peers die Information mitteilt wie diese den von ihnen gesuchten Peer erreichen können. Dies führt zwar einerseits zu geringerem Traffic zwischen den Peers da diese lediglich mit der zentralen Einheit kommunizieren müssen um einen anderen Peer zu erreichen, außerdem müssen die Peers lediglich abspeichern wie sie den zentralen Server erreichen, jedoch entspricht es nur bedingt tatsächlich dem p2p Konzept.\\
+					Die Sicherheit des Systems hängt hierbei direkt von der der Sicherheit der Zentralen Einheit ab.
+					
+				\subsubsection{Pures p2p}
+					
+					Ein pures p2p System besteht aus x gleichberechtigten Komponenten die eine Verbindung mit y (y<x) Komponenten besitzen. Hier existiert keine zentrale Einheit und jede Komponente versucht möglichst direkt Kontakt mit jeder anderen Einheit auf zu nehmen. Wie das Routing innerhalb des Systems durchgeführt wird kann sehr Unterschiedlich sein, jedoch ist es in der Regel bis zu einem gewissen Grad 'chaotisch' da es auf sehr kurzfristige Änderungen reagieren können muss. Pures p2p ist in der Regel sehr dynamisch da jederzeit neue Komponenten an jedem Ort hinzu kommen können und diese Verbindungen zu allen Möglichen anderen Komponenten ziehen können, bzw. permanent abspeichern wie diese erreichbar sind. Da dies jedoch meist (pseudo-)zufällig vonstatten geht ist Effizienz sehr oft nicht gegeben da zB. geographische Verteilung oder Belastbarkeit der Knoten nicht berücksichtigt wird. Das hingegen kann dazu führen dass man eine Komponente erreichen will die im Nebenraum platziert ist aber aufgrund des chaotischen Routings und der Chaotischen Verbindungsfindung dafür über 3 Kontinente gerouted wird.
+					
+				\subsubsection{Hybrid p2p}
+				
+					Hybrid p2p ist eine Kombination aus zentralisiertem und purem p2p. Bei hybridem p2p bilden die Komponenten des Systems 'Gruppen' nach bestimmten Faktoren (meistens geographische Verteilung) und bestimmen eine oder mehrere Hauptkomponenten welche den Großteil des Routings zu den anderen Gruppen übernimmt. Die bestimmte Hauptkomponente ist in der Regel die welche am meisten Netzwerklast verarbeiten kann und am meisten Kontaktdaten zu anderen Komponenten abspeichern muss. Diese lokale Hauptkomponente ist dadurch in der Ausübung ihrer eigentlichen Tätigkeit eingeschränkt, jedoch erhält das gesamte Netzwerk so eine Struktur welche den Nachteilen der Chaotischen Verbindungsführung entgegenwirkt und es kann dennoch leicht dynamisch gehalten werden da bei Ausfall einer Hauptkomponente einfach eine neue bestimmt werden kann. Auch kann man hier Gruppen wieder zu Gruppen zusammenfassen. (zB. Gruppenebene 1 fasst alle Komponenten eines Landes zusammen, Gruppenebene fasst alle Gruppen der ersten Ebene eines Kontinents zusammen)\\
+					Hybrid p2p Systeme werden auch als 2. Generation unstrukturierter p2p Systeme bezeichnet.
+					
+			\subsection{Distributed Hash Tables}
+				
+				Distributed Hast Tables (fortan DHT) stellen den hier angeführten Vertreter von strukturierten p2p Systemen dar. Bei einem strukturierten System ist zu jederzeit eine ganz bestimmte Komponente für eine (bzw. mehrere) ganz bestimmte Anfrage zuständig. und zwar insofern als dass für jede theoretisch mögliche Anfrage innerhalb des Systems eine Komponente zuständig ist, nicht mehr und nicht weniger. \\Um diesen recht abstrakten Satz nun ein wenig zu veranschaulichen, nehmen wir an ziel des Systems ist es eine Datenbank auf zu bauen. So hat jeder Datensatz einen eindeutigen ihm zugehörenden Hashwert, für diesen Hashwert ist nun eine spezielle Komponente zuständig und diese muss wissen wo dieser Datensatz genau zu finden ist. \\ Ein konkreteres Beispiel: Die Datensätze bekommen einen Hashwert im Bereich 1 bis 9 und wir haben 3 Komponenten. Jede Komponente ist nun für einen Bereich der Hashwerte zuständig, sprich Komponente 1 muss wissen wo sich datensätze 1 bis 3 befinden und welche Komponente sie benachrichtigen kann um Datensätze 4-9 zu finden. Wie vorallem das finden der Datensätze 4-9 Implementiert ist und wie aufgeteilt wird welche Komponente für welchen Hashwert zuständig ist hängt vom verwendeten DHT-Algorithmus ab. Um das vorherige Beispiel ein wenig praxisnäher zu bringen könnte man den Hashwert 1 ersetzen durch alle MD5 Haswerte die mit 1 beginnen oder ähnliches.
+				\pagebreak
+				\subsubsection{Chord Algorithmus}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=0.7\linewidth]{./graphics/Chord}
+						\caption{6-Bit Chord identifier Space. Gepunktete Linien geben an welche Komponenten (Nodes) welchen Key zu den Datensätzen betreuen.}
+						\label{fig:Chord}
+					\end{figure}
+
+					Der Chord Algorithmus legt alle möglichen Hashwerte in einem Kreis ab. Jede Komponente muss nun wissen wo sie die Datensätze findet für die sie selbst zuständig ist (Für N8 Beispielsweiße K58-K8) und eine gewisse Anzahl anderer Komponenten nach folgendem Schema:\\
+					'Each node maintains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least $2^{i-1}$, i.e., successor $n+{2}^{i-1}$, where $1 <= i <= l$. For example, the second finder of node N8 $(8+2^1=10)$ is node 10 and the third finder $(8+2^2=12)$ is node 15' Wobei zu beachten ist,dass N15 für den Bereich der Keys 11 bis 15 zuständig ist. %TODO Zitieren.
+					\\Dadurch ergeben sich selbst bei großen Speicher-Spaces (zB. 256 Bit) relativ kleine Finger Tables nur und somit auch nur kleiner Speicheraufwand zum Routing und erreichen aller Datensätze. Das Routing selbst wird immer genauer je näher man dem gewünschten Key kommt, die Anzahl der Routing-schritte befindet nicht daher im Bereich von O(log(N)). \\
+					Würde N8 in unserem Beispiel \label{fig:Chord} K38 erreichen wollen so würde er den näherstehen vorhergehenden Node im Figure Table fragen, d.h. N24. N24 würde das selbe nun wieder machen, daher die Anfrage zu N35 weiterschicken. Bei N35 ist der näherste Node zu K38 ident mit dem ersten Node im Figur Table (N43), N35 würde N8 daher nun eine Nachricht schicken dass N43 für K38 zuständig ist. Würde N8 dagegen K51 wissen wollen wären die Schritte N43-N48 und dieser würde dann N57 als Antwort schicken.\\
+					In einem Chord netzwerk mit 1000 Komponenenten werden ungefähr O(10) Schritte gebraucht um die zuständige Komponente für den gesuchten Key zu finden. Der Chord Algorithmus hat außerdem die Möglichkeit zur Selbstorganisation bei neu hinzukommenenden Komponenten und Komponentenausfall
+					%TODO Reference Steinmetz Seite 97

@@ -26,10 +26,14 @@
 
 \chapter{Erklärung}
 	\section{Wofür steht Space-Based Computing?}
-		Space-Based Computing (fortan SBC) hat seine Ursprünge im parallel programming, und stellt dabei hauptsächlich ein Datenorientiertes Modell zur Koordination dar. Wie aus dem Namen eindeutig hervorgeht handelt es sich hierbei um ein Modell welches auf 'Spaces' basiert. Ein Space ist hierbei gleichbedeutend mit einem (logischen) Ort auf welchem Daten von mehreren Komponenten geteilt verwendet werden. Diese Komponenten können im einfachsten Fall 'write', 'read' und 'take' Aktionen ausführen. Ein Write steht hierfür für das zur Verfügung Stellen eines neuen Datenteil an alle anderen Komponenten in diesem Space, ein Read für das Lesen von Daten ohne diese zu entfernen und ein Take für das Lesen und entfernen einer Datei aus dem Space, auch destructive read genannt. Im einfachsten Fall hat ein Space nun das Datenmodell eines Tuples.\\      Eine Hauptanforderung die an einen Space hier nun gestellt wird ist das persistente Aufbewahren aller Daten die sich in ihm befinden, auch bei Systemausfällen. Wie das SBC modelliert und implementiert wird kann sehr stark variieren, je denn gegebenen Anforderungen und Wünschen entsprechend. Was hierbei vor allem variiert ist die Zahl der Geräte auf dem der Space implementiert ist und die Zahl der Geräte die auf diesen Space zugreifen, diese Zahlen sind prinzipiell, wenn nicht durch den Anwendungsfall anders umgesetzt, voneinander unabhängig und befinden sich jeweils im Bereich von 1 bis n. \\   Das SBC-System stellt hierbei eine logische zentrale Einheit dar welche nicht spezifiziert wo sie genau überall Physikalisch vorhanden ist. Der Ort wo eine Datei schlussendlich wirklich physikalisch abgespeichert wird kann dabei nach verschiedensten Methoden ausgewählt werden, in der simpelsten Form wird das selbe Prinzip wie bei Tuples angewendet %TODO Nachschaun
+		Space-Based Computing (fortan SBC) hat seine Ursprünge im parallel programming, und stellt dabei hauptsächlich ein Datenorientiertes Modell zur Koordination dar. Wie aus dem Namen eindeutig hervorgeht handelt es sich hierbei um ein Modell welches auf 'Spaces' basiert. Ein Space ist hierbei gleichbedeutend mit einem (logischen) Ort auf welchem Daten von mehreren Komponenten geteilt verwendet werden. Diese Komponenten können im einfachsten Fall 'write', 'read' und 'take' Aktionen ausführen. Ein Write steht hierfür für das zur Verfügung Stellen eines neuen Datenteil an alle anderen Komponenten in diesem Space, ein Read für das Lesen von Daten ohne diese zu entfernen und ein Take für das Lesen und entfernen einer Datei aus dem Space, auch destructive read genannt. Im einfachsten Fall hat ein Space nun das Datenmodell eines Tuples.\\      Eine Hauptanforderung die an einen Space hier nun gestellt wird ist das persistente Aufbewahren aller Daten die sich in ihm befinden, auch bei Systemausfällen. Wie das SBC modelliert und implementiert wird kann sehr stark variieren, je denn gegebenen Anforderungen und Wünschen entsprechend. Was hierbei vor allem variiert ist die Zahl der Geräte auf dem der Space implementiert ist und die Zahl der Geräte die auf diesen Space zugreifen, diese Zahlen sind prinzipiell, wenn nicht durch den Anwendungsfall anders umgesetzt, voneinander unabhängig und befinden sich jeweils im Bereich von 1 bis n. \\   Das SBC-System stellt hierbei eine logische zentrale Einheit dar welche nicht spezifiziert wo genau sie Physikalisch vorhanden ist. Der Ort wo eine Datei schlussendlich wirklich abgespeichert wird kann dabei nach verschiedensten Methoden ausgewählt werden, in der simpelsten Form wird das selbe Prinzip wie bei Tuples angewendet %TODO Nachschaun
 		oder es werden andere Prinzipien verwendet wie FIFO, LIFO, keys, geo-coordinates oder noch kompliziertere, auch das ist vom gegebenen Anwendungsfall abhängig.
-		\cite{Steinmetz2005}
-	
+		%\cite{Steinmetz2005} 
+		%TODO Zitieren
+		\subsection{EAI}
+			Enterprise Application Integration (EAI) Systeme sind der heutige Ansatz um der oft allgemein üblichen 'chaotischen' Kommunikation entgegen zu wirken. Gemeint sind damit beispielsweise Sockets, MOM, RPC oder RMI die meistens nur so wie es gerade notwendig ist direkt mit allen Möglichen anderen Komponenten kommunizieren, zwar genau so wie es für ihre Aufgabe notwendig ist im Gesamtbild aller Komponenten jedoch eben Chaotisch. \\
+			EAI Systeme sind Beispielsweise Object Request Broker (CORBA DCOM...), Message Queues, Message Broker und Enterbrise service Buses.\\
+			All diese Systeme sind jedoch hauptsächlich Nachrichten-orientiert und ziemlich komplex, daher für Kommunikation zwar brauchbar, jedoch für tatsächliches Arbeiten mit verteilt abgespeicherten Daten nur bedingt ratsam, hier kommt nun SBC ins Spiel.
 		
 		\subsection{Unterschied zwischen SBC und Cloudcomputing}
 			Um nun der Verwechslung von SBC und Cloudcomputing vor zu Beugen sie hier nun gesagt, zu aller erst behandelt SBC lediglich die Daten und Cloudcomputing stellt noch viele weitere Ressourcen (wie zB. Rechenleistung) zur Verfügung. Auch zu Cloud-Storrage kann man abgrenzen, Cloud-Storrage behandelt nicht nur die interne Abspeicherung der Daten sondern auch vor allem wie diese dem Benutzer zur Verfügung gestellt und abstrahiert werden, bei SBC geht es hauptsächlich um die interene Verteilung und Kommunikation der Komponenten untereinander und stellt dabei einen Datenkanal zwischen den Komponenten des Spaces dar beziehungsweise zur Verfügung. 
@@ -38,14 +42,26 @@
 		SBC wird vor allem immer dort verwendet wo Daten verteilt abgespeichert werden sollen. Dies kann auf verschiedenste Arte durchgeführt werden um so 'Bottlenecks' %TODO Fußnote
 		zu schließen. SBC bietet durch die Verteilung des Spaces auf mehrere Komponenten grundlegend immer mehr zur Verfügung stehenden Speicherplatz, wodurch man je nach Implementierung verschiedene Vorteile gewinnen kann. Man kann diesen Speicherplatz beispielsweise direkt logisch zur Verfügung stellen und so den logisch zur Verfügung stehenden Speicherplatz erhöhen, man kann die notwendige  Kommunikation auf einer Komponente verringern (durch Aufteilung) und man kann für Redundanz sorgen. Die Vorteile lassen sich hierbei auch annähernd beliebig Kombinieren wobei zu beachten ist, das 2 Kombinierte Vorteile auch bei bester Umsetzung so gut wie immer einen dritten Vorteil verringern oder noch andere Nachteile nach sich ziehen. Redundanz schlägt sich Beispielsweise immer auf den zur Verfügung stehenden Speicherplatz nieder, was durch erhöhte Kommunikation zwischen den Komponenten jedoch wieder verringert werden kann. \\    Ein Beispiel für einen weiteren Vorteil wäre zum Beispiel die Möglichkeit an jeder Komponente Zugang zum ganzen Space zu haben, was in einem Master-Client System erhöhte Kommunikation zum Master mit sich bringt, außerdem müssen die Clients in diesem Fall auch durchgehend die Möglichkeit haben zumindest einen Master ansprechen zu können. Dieser Vorteil stellt sich automatisch ein wenn man auf ein Peer-to-Peer System wechselt, wobei auch oftmals stark belastete Master-Komponenten nicht mehr notwendig sind aber in der Regel wieder mehr Kommunikation zwischen den Komponenten notwendig ist.
 \chapter{Grundlegende Prinzipien}
-	\section{Space-Based Computing Paradigmen}
-		\subsection{Tuple Spaces}
+	
+	\section{Space-Based Computing Paradigma}
+		
+		\subsection{Decoupling of Interaction}
+			Interaktionen sind bei SBC in 3 Teile geteilt 
+			\begin{itemize}
+				\item Zeit
+					\subitem Applikationen können jederzeit Daten Lesen und schreiben.
+				\item Space
+					\subitem Applikationen müssen nur auf den selben Space zugreifen um miteinander zu kommunizieren
+				\item Referenzierung
+					\subitem Applikation die miteinander Kommunizieren müssen nicht tatsächlich voneinander wissen.
+			\end{itemize}
+			Durch diese Aufteilung sind die Applikation tatsächlich voneinander unabhängig, ändert sich nun an einer Applikation etwas (Ort, Ausführungszeit etc.) so ist dies für die andere gänzlich irrelevant (abgesehen von sich ändernden Inhalt) solange sich der Space auf den beide zugreifen und über welchen sie Kommunizieren der gleiche bleibt. Auch wenn zu einem späteren Zeitpunkt weitere Applikation hinzugefügt werden, so ist das (erneut, ausgenommen Nachrichteninhalt) für die ersten beiden Applikation insofern irrelevant als das man an ihnen nichts ändern muss deswegen. Zu beachten ist jedoch dass so keine direkte Kommunikation mehr stattfindet und daher auch keine direkte Reaktion zu erwarten ist in der Regel. (Ausgenommen es werden notifies aus geschickt)
+			
 			
 		
 	\section{Mapping}
 		
-	\section{EAI}
-		
+	
 \chapter{Im genaueren betrachtet}
 	\section{Tuple Spaces}
 		Tuple Spaces
@@ -122,7 +138,7 @@
 			\subsection{P2p Arten/Routing}
 			
 				Die Arten von p2p Systemen kann man in der Regel dadurch unterscheiden wie das Routing innerhalb des Systems funktioniert, d.h. wie schafft es Komponente A mit Komponente B-Z Kontakt auf zu nehmen. Das Routing in (größeren) p2p Systemen ist entscheidend dafür wie skalierbar, effizient, sicher und ressourcenschonend es ist.
-				\\\\Prinzipiell kann man p2p Systeme in Unstrukturierte und Strukturierte Systeme unterteilen. Unstrukturierte Systeme stellen dabei den weit bekannteren Teil der Systeme und umfassen unter anderem Zentralisierte Systeme (zB. Napster), Pure p2p Systeme (zB. Gnutella 0.4) oder Hybride p2p Systeme (zB. Gnutela 0.6) wärend Strukturierte p2p Systeme beispielsweise mit Distributed-Hash-Tables realisiert werden können. \footnote{\cite{Steinmetz2005}}
+				\\\\Prinzipiell kann man p2p Systeme in Unstrukturierte und Strukturierte Systeme unterteilen. Unstrukturierte Systeme stellen dabei den weit bekannteren Teil der Systeme und umfassen unter anderem Zentralisierte Systeme (zB. Napster), Pure p2p Systeme (zB. Gnutella 0.4) oder Hybride p2p Systeme (zB. Gnutela 0.6) wärend Strukturierte p2p Systeme beispielsweise mit Distributed-Hash-Tables realisiert werden können. %\footnote{\cite{Steinmetz2005}}
 				
 			\subsection{Unstrukturierte p2p Systeme}
 				\subsubsection{Zentralisiertes p2p}
@@ -142,11 +158,21 @@
 			\subsection{Distributed Hash Tables}
 				
 				Distributed Hast Tables (fortan DHT) stellen den hier angeführten Vertreter von strukturierten p2p Systemen dar. Bei einem strukturierten System ist zu jederzeit eine ganz bestimmte Komponente für eine (bzw. mehrere) ganz bestimmte Anfrage zuständig. und zwar insofern als dass für jede theoretisch mögliche Anfrage innerhalb des Systems eine Komponente zuständig ist, nicht mehr und nicht weniger. \\Um diesen recht abstrakten Satz nun ein wenig zu veranschaulichen, nehmen wir an ziel des Systems ist es eine Datenbank auf zu bauen. So hat jeder Datensatz einen eindeutigen ihm zugehörenden Hashwert, für diesen Hashwert ist nun eine spezielle Komponente zuständig und diese muss wissen wo dieser Datensatz genau zu finden ist. \\ Ein konkreteres Beispiel: Die Datensätze bekommen einen Hashwert im Bereich 1 bis 9 und wir haben 3 Komponenten. Jede Komponente ist nun für einen Bereich der Hashwerte zuständig, sprich Komponente 1 muss wissen wo sich datensätze 1 bis 3 befinden und welche Komponente sie benachrichtigen kann um Datensätze 4-9 zu finden. Wie vorallem das finden der Datensätze 4-9 Implementiert ist und wie aufgeteilt wird welche Komponente für welchen Hashwert zuständig ist hängt vom verwendeten DHT-Algorithmus ab. Um das vorherige Beispiel ein wenig praxisnäher zu bringen könnte man den Hashwert 1 ersetzen durch alle MD5 Haswerte die mit 1 beginnen oder ähnliches.
-				
+				\pagebreak
 				\subsubsection{Chord Algorithmus}
-					
-					Der Chord Algorithmus legt alle möglichen hashwerte in einem Kries ab (beginnend mit 000.. und endend mit 999 bei dezimaler darstellung). Jede Komponente muss nun wissen wo sie die Datensätze findet für die sie selbst zuständig ist und eine gewisse Anzahl anderer Komponenten nach folgendem Schema:\\
-					'Each node maintains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least $2^{i-1}$, i.e., successor $n+{2}^{i-1}$, where $1 <= i <= l$. For example, te second finder of node N8 $(8+2^1=10)$ is node 10 and the third finder $(8+2^2=12)$ is node 15 Wobei zu beachten ist, node 15 für den Bereich der Nodes 11 bis 15 zuständig ist. %TODO Graphik aus Buch seite 96 einfügen. Zitieren.
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=0.7\linewidth]{./graphics/Chord}
+						\caption{6-Bit Chord identifier Space. Gepunktete Linien geben an welche Komponenten (Nodes) welchen Key zu den Datensätzen betreuen.}
+						\label{fig:Chord}
+					\end{figure}
+
+					Der Chord Algorithmus legt alle möglichen Hashwerte in einem Kreis ab. Jede Komponente muss nun wissen wo sie die Datensätze findet für die sie selbst zuständig ist (Für N8 Beispielsweiße K58-K8) und eine gewisse Anzahl anderer Komponenten nach folgendem Schema:\\
+					'Each node maintains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least $2^{i-1}$, i.e., successor $n+{2}^{i-1}$, where $1 <= i <= l$. For example, the second finder of node N8 $(8+2^1=10)$ is node 10 and the third finder $(8+2^2=12)$ is node 15' Wobei zu beachten ist,dass N15 für den Bereich der Keys 11 bis 15 zuständig ist. %TODO Zitieren.
+					\\Dadurch ergeben sich selbst bei großen Speicher-Spaces (zB. 256 Bit) relativ kleine Finger Tables nur und somit auch nur kleiner Speicheraufwand zum Routing und erreichen aller Datensätze. Das Routing selbst wird immer genauer je näher man dem gewünschten Key kommt, die Anzahl der Routing-schritte befindet nicht daher im Bereich von O(log(N)). \\
+					Würde N8 in unserem Beispiel \label{fig:Chord} K38 erreichen wollen so würde er den näherstehen vorhergehenden Node im Figure Table fragen, d.h. N24. N24 würde das selbe nun wieder machen, daher die Anfrage zu N35 weiterschicken. Bei N35 ist der näherste Node zu K38 ident mit dem ersten Node im Figur Table (N43), N35 würde N8 daher nun eine Nachricht schicken dass N43 für K38 zuständig ist. Würde N8 dagegen K51 wissen wollen wären die Schritte N43-N48 und dieser würde dann N57 als Antwort schicken.\\
+					In einem Chord netzwerk mit 1000 Komponenenten werden ungefähr O(10) Schritte gebraucht um die zuständige Komponente für den gesuchten Key zu finden. Der Chord Algorithmus hat außerdem die Möglichkeit zur Selbstorganisation bei neu hinzukommenenden Komponenten und Komponentenausfall
+					%TODO Reference Steinmetz Seite 97
 					
 					
 				\subsubsection{CAN Algorithmus}
