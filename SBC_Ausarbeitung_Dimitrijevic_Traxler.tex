@@ -64,7 +64,8 @@
 	\section{Tuple Spaces}
 		Tuple Spaces
 		
-		Ein Tupel Raum ist eine Ausführung des assoziativen Gedächtnisses Modell für verteilte / paralleles computing. Es bietet eine Bibliothek von Tupeln, auf  die gleichzeitig zugegriffen werden kann. Tupel sind Begriffe, mit null oder mehr Argumente und einem Schlüssel. %zu bearbeiten
+		Ein Tupel Raum ist eine Ausführung des assoziativen Gedächtnisses Modell für verteiltes / paralleles Verarbeiten. Es bietet eine Bibliothek von Tupeln, auf  die gleichzeitig zugegriffen werden kann. Tupel sind Begriffe, mit null oder mehr Argumente und einem Schlüssel. %TODO muss ein anderes Wort für Begriffe finden\\
+		
 		
 		Die Sammlung von Tupeln unterstützt einige Grundfunktionen, wie zB das Hinzufügen eines Tupels in den Raum (Schreiben) und Entfernen eines Tupels aus dem Raum (nehmen). Das Tupel Sammlung wird von einem Netzwerk über mehrere Server aufbewahrt und gemanaged. Mehrere Threads können  zur selben Zeit auf den selben Raum zugreifen.
 		
@@ -72,6 +73,8 @@
 		
 		\subsection{Linda}
 		Ziel von Linda ist es, Prozessen einer Anwendung zu erlauben, miteinander zu kommunizieren, ohne identifikations Informationen des Datensatzes zu wissen. Früher ging Linda  von einem Tupelraum  als Umgebung aus. Verschiedene nebenläufige Prozesse eines verteilten Programms kommunizieren über einen gemeinsamen Tupelraum dadurch, dass jeder dieser Prozesse diesem Tupelraum beliebig Tupel hinzufügen und Tupel daraus entfernen kann.
+		%TODO Früher ging Linda\\
+		
 		
 		Die hieraus resultierende zeitliche und aufgrund der Verteilung auch räumliche Entkoppelung ermöglicht einen Entwurf verteilter Protokolle, die flexibel und robust auf die Herausforderungen verteilter Programmierung durch Latenz, erhöhten Synchronisationsaufwand und mögliche Teilausfälle des Systems reagieren können. %zu überarbeiten
 		
@@ -81,7 +84,7 @@
 		Bis jetzt werden die meisten "Messages" dirket zwischen den Machinen ausgetauscht. Triple Space Computing möchte das die Daten in einen
 		Space geschrieben wird und das jeder auf die Elemente des Spaces zugreifen kann und diese lesen/schreiben/entnehmen kann.\\
 		Zitat:" In der Zukunft könnte Triple space Computing das Web für die Machinene werden wie HTML das Web für Menschen geworden ist".\\ \\
-		Triple Space Computing bietet einen Kommunikations Paradeigmas des anonymen und asynchronen Informations austausch und ebenfalls die 
+		Triple Space Computing bietet einen Kommunikations Paradigmas des anonymen und asynchronen Informations Austausch und ebenfalls die 
 		Persistenz und Einzigartige Identifikation von Daten.\\
 			
 		
@@ -188,10 +191,10 @@
 			•	Die Addressierung und Lokalisierung von Ressourcen\\
 			•	Replikation: Verwalten von Daten Kopien an verschiedenen Orten\\
 			•	Transaktion\\
-			•	Skalierbarjeit: Die Möglichkeit der Erweiterung des Systems im Zuge der wachsenden Anforderung und Belastung des Systems.\\
+			•	Skalierbarkeit: Die Möglichkeit der Erweiterung des Systems im Zuge der wachsenden Anforderung und Belastung des Systems.\\
 			•	Lastverteilung\\
 			•	Ausfahlsicherheit\\
-			Corso ist eine Middleware die auf dem MOM(Message Oriented Middleware) Prinzip aufbaut. Corso nimmt sich als Middleware der oben genanten Problemen and und erleichtert es dem Entwickler da er sich nicht um diese kümmern muss. Corso erleichtert die Addressierung und vereinfacht das arbeiten mit Spaces.\\
+			Corso ist eine Middleware die auf dem MOM(Message Oriented Middleware) Prinzip aufbaut. Corso nimmt sich als Middleware der oben genanten Problemen an und erleichtert es dem Entwickler da er sich nicht um diese kümmern muss. Corso erleichtert die Addressierung und vereinfacht das arbeiten mit Spaces.\\
 			
 			\subsection{Koordinationsmodell}
 			
@@ -213,10 +216,10 @@
 			
 						
 			\subsection{Virtual shared Memory}
-			%zu ändern
+			
 			
 			Ein Virtual Shared Memory stellt einen freigegeben Datenraum für die Kommunikation und Zusammenarbeit von mehreren Autonomen System Komponenten zur Verfügung, auch genant Peers. Peers können ihre Anfragen in diesen Datenraum schreiben, als auch User und Nutzdaten, die für die Arbeit erfoderlich sind.
-			Das Konzept des Virtual Shared Memory ist aus dem Parallel Computings bereits bekannt und anerkannt.\\
+			Das Konzept des Virtual Shared Memory ist aus dem Parallel Computing bereits bekannt und anerkannt.\\
 			Das Virtual Shared Memory Ansatz ermöglicht es autonomen Arbeitern miteinander zu im Virtuellen Datenraum zu interagieren.\\
 			Das heißt das alle arbeitenden Peers haben Zugriff auf die geteilten(verteilten) Daten in einem gut strukturiertem, sicheren, virtuellen Speicher.
 			 
@@ -225,10 +228,10 @@
 			  
 		
 		\section{XVSM}
-		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware technology die Daten in “Spaces” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die Ausfallwahrscheinlichkeit der Daten reduziert.\\
+		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware Technology die Daten in “Container” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die Ausfallwahrscheinlichkeit der Daten reduziert.\\
 		
-		Ist ein Virtual Shared Memory dessen Funktionalitäten sehr leicht durch Software Entwicklern der durch die Verwendung von Aspekten erweitert werden kann. Man kann nicht davon ausgehen das eine Middleware alle Funktionalitäten bieten kann und man wird nicht ein Produkt nutzen das nicht die benötigten Funktionalitäten hat und man wird nicht gerne eine Middleware nutzen die überladen ist.\\
-		Mit XVSM kann man so Konfigurieren so, dass die gewünschten Funktionen hinzufügt werden(Pluggable Komponents) oder, wegnehmen wenn ungewünscht sind.(In der Graphik dargestellt durch die Gelben Elemente)\\
+		XVSM ist ein Virtual Shared Memory dessen Funktionalitäten sehr leicht durch Software Entwicklern, der durch die Verwendung von Aspekten, erweitert werden kann. Man kann nicht davon ausgehen das eine Middleware alle Funktionalitäten bieten kann und man wird nicht ein Produkt nutzen das nicht die benötigten Funktionalitäten hat und man wird nicht gerne eine Middleware nutzen die überladen ist.\\
+		Mit XVSM kann man es so Konfigurieren, dass die gewünschten Funktionen hinzufügt werden(Pluggable Komponents) oder, wegnehmen wenn ungewünscht sind.(In der Graphik dargestellt durch die Gelben Elemente)\\
 		\begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{./08570620af}
@@ -252,8 +255,8 @@
 			Tinyspaces setzt auf das XVSM prinzip auf und benutzt das .Net Framework. Da es bei dem XVSM Prinzip noch nicht vollkommen mit allen Implementierungen kompatibel war erschuf man Tinyspaces. 
 			TinySpaces soll es erleichtern mit space based computing zu arbeiten. Da es unnötige schichten entfernt. 
 			TinySpaces nutzt die unterstützung von Contracts die sagen wie man ein bestimmtes Interface ansprechen soll.
-			Durch die Nutzung von Contracts ist es möglich die angesprochenen Componenten zu ändern. Da man bei der programmierung der Aplication darauf zielen sollte das Alle Componenten auf denn Contract aufbauen sollten.
-			TinySpaces setzt auf CAPI-1 auf damit sie denn wechsel von Componenten während der Laufzeit zu ändern.
+			Durch die Nutzung von Contracts ist es möglich die angesprochenen Componenten zu ändern. Da man bei der Programmierung der Aplication darauf zielen sollte das Alle Componenten auf denn Contract aufbauen sollten.
+			TinySpaces setzt auf CAPI-1 auf damit sie denn Wechsel von Componenten während der Laufzeit zu ändern.
 		\section{GSpaces}
 		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel, benutzt diese aber mit Replikationsrichtlinien.  Bei einem Aufruf wird ein lokaler Aufrufshändler aufgerufen und es wird nachgeschaut welche Operation ausgeführt werden muss. Bei  einem Aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager weitergeleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie herrscht wird dann einfach die Read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
 	
