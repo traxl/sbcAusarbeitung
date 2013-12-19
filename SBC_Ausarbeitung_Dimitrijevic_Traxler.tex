@@ -58,7 +58,8 @@
 		
 		
 	\section{Mapping}
-		
+		Mapping ist ein sehr essentieller Teil des SBC, hierbei wird definiert wie eine Applikation tatsächlich von ihrer Anfrage an den Space, zu den abgespeicherten Daten bzw. zu dem Ergebnis der Anfrage kommt. Dafür ist in jedem Fall ein einheitliches Konzept für den gesamten Space, bzw. für das ganze Space-System notwendig. Nach diesem Konzept wird auf den Space zugegriffen und anfragen gegebenenfalls Umgewandelt (zB. ein SBC read zu einem SQL select), außerdem ist in diesem Konzept auch eindeutig fest zu legen in welcher Form Daten schlussendlich im Space abgelegt sein können. (Datenbank, Plaintext, Bytestream, diverse Strukturtypen, etc.) \\
+		Dieses Mapping hängt folglich stark von der Art des implementierten Systems ab, stellt ein Peer-to-Peer System beispielsweise gänzlich andere Anforderungen an einen Zugriffsvorgang als eine Server Client Architektur und auch bei dieser kann es sich sehr unterscheiden ob es nur ein Server ist oder bei Replikation, auf die Art der Replikation. Der nutzen von gutem mapping kann beginnen bei Einheitlichen Daten die ohne sehr viel weiteres marshalling meist auskommen bis hin zu Load Balancing, erhöhter Ausfallsicherheit, verringerte Zugriffszeiten/schnellere Anfragenabarbeitung, Ablaufoptimierung und mehr.
 	
 \chapter{Im genaueren betrachtet}
 	\section{Tuple Spaces}
