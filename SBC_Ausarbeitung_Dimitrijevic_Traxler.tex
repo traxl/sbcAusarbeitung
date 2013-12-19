@@ -99,7 +99,7 @@
 		
 			Die Semantische Web Technologie ist eine Erweiterung des heutigen Webs, in dem die Informationen eine gut definierte, maschinell verarbeitbare Bedeutung haben und es Maschinen und Menschen ermöglicht leicht zu Co-Operieren.\\
 				Es ist gedacht um das Web mit einem Netzwerk von adressierbaren URIs zu verlinken so ,dass es Maschinen leicht fällt syntaktisch und semantisch darauf zuzugreifen.
-				Für diesen Zweck sollten die Ressourcen mit Maschinen verständlichen Metadaten versehen werden, die durch Verwendung von Allgemeinem Vokabular und einer vordefinierten Semantik definiert werden, auch bekannt als "Ontologie"
+				Für diesen Zweck sollten die Ressourcen mit Maschinen verständlichen Metadaten versehen werden, die durch Verwendung von Allgemeinem Vokabular und einer vordefinierten Semantik erreicht werden, auch bekannt als "Ontologie"
 				\\
 			
 	
@@ -109,10 +109,10 @@
 		
 		
 		%TODO Muss ich mir nochmal web services anschauen. Referenzieren auf SOA ausarbeitung
-		Web-Service Technologie bietet eine 
-		"Virtuelle Komponenten-Modell" zur vereinheinfachung der 
-		heterogenenen Welt von Komponenten. Es  erlaubt es, bestehende Funktionalität zu nutzen 
-		ohne die Last der Mittelware spezifischen Eigenheiten, wie die invokation-Mechanismus, Transport-Protokoll usw. Web Services sind eine gut verstandenes Kommunikationsstruktur und-Architektur für Unternehmensanwendungen.\\ Mehr zu diesem Thema in der Ausarbeitung über SOA.
+		Die Web-Service Technologie bietet eine 
+		"Virtuelle Komponenten-Modell" zur Vereinfachung der 
+		heterogenen Welt von Komponenten. Es  erlaubt es, bestehende Funktionalität zu nutzen 
+		ohne die Last der Middleware spezifischen Eigenheiten, wie die invokation-Mechanismus, Transport-Protokoll usw. Web Services sind eine gut verstandene Kommunikationsstruktur und-Architektur für Unternehmensanwendungen.\\ Mehr zu diesem Thema in der Ausarbeitung über SOA.
 		
 		\section{Reliable Message}
 			
@@ -187,19 +187,19 @@
 					 
 \chapter{Namhafte Implementierungen}
 	\section{JavaSpaces}
-		JavaSpaces ist eine Spezifikation des Konzepts Object-Spaces in der Programmiersprache Java. Ein Object-Space ist ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen "aktiven, verteilten Datenraum", wie er in keiner anderen Technologie geschaffen wird (traditionelles Grid-Computing). Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.\\\\	
+		JavaSpaces ist eine Spezifikation des Konzepts Object-Spaces in der Programmiersprache Java. Ein Object-Space ist ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen "aktiven, verteilten Datenraum", wie er in keiner anderen Technologie geschaffen wird. Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.\\\\	
 		Die Gründe, warum JavaSpaces eingesetzt werden, sind vielfältig. Meist wird Skalierbarkeit und Verfügbarkeit bei gleichzeitiger Reduzierung der Gesamtkomplexität angestrebt.
 		
 		
 		\section{Corso} %TODO bitte noch ein wenig besser Formatieren
 			Corso( Co-ORdinated Shared Objects) basiert auf Forschungsarbeiten der Technischen Uni Wien.
-			Software Entwicklung in heterogenen verteilten Systemen bringt immer zusätzlich Komplexität.\\
-			•	Die Adressierung und Lokalisierung von Ressourcen\\
-			•	Replikation: Verwalten von Daten Kopien an verschiedenen Orten\\
+			Software Entwicklung in heterogenen verteilten Systemen bringt immer zusätzlich Komplexität.\\\\
+			•   Adressierung und Lokalisierung \\
+			•	Replikation\\
 			•	Transaktion\\
-			•	Skalierbarkeit: Die Möglichkeit der Erweiterung des Systems im Zuge der wachsenden Anforderung und Belastung des Systems.\\
+			•	Skalierbarkeit\\
 			•	Lastverteilung\\
-			•	Ausfallsicherheit\\
+			•	Ausfallsicherheit\\ \\
 			Corso ist eine Middleware die auf dem MOM(Message Oriented Middleware) Prinzip aufbaut. Corso nimmt sich als Middleware der oben genanten Problemen an und erleichtert es dem Entwickler da er sich nicht um diese kümmern muss. Corso erleichtert die Adressierung und vereinfacht das arbeiten mit Spaces.\\
 			
 			\subsection{Koordinationsmodell}
@@ -215,7 +215,7 @@
 			Die Objekte werden von Agenten überwacht. Diese Agenten sollen sicherstellen das alle Daten konsistent sind. Das heißt Transaktionen werden atomar gemacht und entweder ganz oder gar nicht ausgeführt.
 			
 			Die Nebenläufigkeit wird mit Corso Prozessen sichergestellt. Die Prozesse habe eine bestimmte Aufgabe und diese werden entweder durch Systemprozesse oder Threads realisiert.
-			Corso Prozesse unterstützen den Austausch von Objekten da man nur zugriff auf Objekte hat die eine Gehören, ein sub-Objekt eines erstellten Objektes ist oder man die Referent auf dieses Objekts besitzt.
+			Corso Prozesse unterstützen den Austausch von Objekten da man nur zugriff auf Objekte hat die einem Gehören, ein sub-Objekt eines erstellten Objektes sind oder man die Referenz auf dieses Objekts besitzt.
 			Das heißt Objekte benötigen eine Autorisierung.
 			
 			
@@ -226,8 +226,8 @@
 			
 			Ein Virtual Shared Memory stellt einen freigegeben Datenraum für die Kommunikation und Zusammenarbeit von mehreren autonomen System Komponenten zur Verfügung, auch genant Peers. Peers können ihre Anfragen in diesen Datenraum schreiben, als auch User und Nutzdaten, die für die Arbeit erforderlich sind.
 			Das Konzept des Virtual Shared Memory ist aus dem Parallel Computing bereits bekannt und anerkannt.\\
-			Das Virtual Shared Memory Ansatz ermöglicht es autonomen Arbeitern miteinander zu im virtuellen Datenraum zu interagieren.\\
-			Das heißt das alle arbeitenden Peers haben Zugriff auf die geteilten(verteilten) Daten in einem gut strukturiertem, sicheren, virtuellen Speicher.
+			Das Virtual Shared Memory Ansatz ermöglicht es autonomen Arbeitern miteinander im virtuellen Datenraum zu interagieren.\\
+			Das heißt das alle arbeitenden Peers  Zugriff auf die geteilten(verteilten) Daten in einem gut strukturiertem, sicheren, virtuellen Speicher haben.
 			 
 			
 			
@@ -236,8 +236,8 @@
 		\section{XVSM}
 		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware Technology die Daten in “Container” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die Ausfallwahrscheinlichkeit der Daten reduziert.\\
 		
-		XVSM ist ein Virtual Shared Memory dessen Funktionalitäten sehr leicht durch Software Entwicklern, der durch die Verwendung von Aspekten, erweitert werden kann. Man kann nicht davon ausgehen, dass eine Middleware alle Funktionalitäten bieten kann und man wird nicht ein Produkt nutzen das nicht die benötigten Funktionalitäten hat und man wird nicht gerne eine Middleware nutzen die überladen ist.\\
-		Mit XVSM kann man es so Konfigurieren, dass die gewünschten Funktionen hinzufügt werden(Plugable Komponents) oder, entfernen wenn sie unerwünscht sind.(In der Graphik dargestellt durch die Gelben Elemente)\\
+		XVSM ist ein Virtual Shared Memory dessen Funktionalitäten sehr leicht durch Software Entwicklern erweitert werden kann. Man kann nicht davon ausgehen, dass eine Middleware alle Funktionalitäten bietet die man braucht und man wird nicht ein Produkt nutzen das nicht die benötigten Funktionalitäten hat, oder eine Middleware benutzen die überladen ist.\\
+		Mit XVSM kann man es so Konfigurieren, dass die gewünschten Funktionen hinzufügt werden(Plugable Komponents) oder, entfernt werden können wenn sie unerwünscht sind.(In der Graphik dargestellt durch die Gelben Elemente)\\
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=0.7\linewidth]{./08570620af}
@@ -259,12 +259,12 @@
 		
 		\section{TinySpaces}
 			Tinyspaces setzt auf das XVSM Prinzip auf und benutzt das .Net Framework. Da es bei dem XVSM Prinzip noch nicht vollkommen mit allen Implementierungen kompatibel war erschuf man Tinyspaces. 
-			TinySpaces soll es erleichtern mit SBC zu arbeiten. Da es unnötige schichten entfernt. 
+			TinySpaces soll es erleichtern mit SBC zu arbeiten, da es unnötige schichten entfernt. 
 			TinySpaces nutzt die Unterstützung von Contracts die sagen wie man ein bestimmtes Interface ansprechen soll.
-			Durch die Nutzung von Contracts ist es möglich die angesprochenen Komponenten zu ändern. Da man bei der Programmierung der Applikation darauf zielen sollte das Alle Komponenten auf denn Contract aufbauen sollten.
-			TinySpaces setzt auf CAPI-1 auf damit sie denn Wechsel von Komponenten während der Laufzeit zu ändern.
+			Durch die Nutzung von Contracts ist es möglich die angesprochenen Komponenten zu ändern. Da man bei der Programmierung der Applikation darauf zielen sollte das Alle Komponenten auf denn Contract aufbauen sollten.\\
+			TinySpaces setzt auf CAPI-1 auf damit man die Komponenten während der Laufzeit wechseln kann.
 		\section{GSpaces}
-		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel, benutzt diese aber mit Replikationsrichtlinien.  Bei einem Aufruf wird ein lokaler Aufrufverarbeiter aufgerufen und es wird nachgeschaut welche Operation ausgeführt werden muss. Bei  einem Aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager weitergeleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie herrscht wird dann einfach die read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
+		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel, benutzt diese aber mit Replikationsrichtlinien.  Bei einem Aufruf wird ein lokaler Aufrufverarbeiter aufgerufen und es wird nachgeschaut welche Operation ausgeführt werden muss. Bei  einem Aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager geleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie basiert wird einfach die read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
 	
 \chapter{Conclusio}
 
