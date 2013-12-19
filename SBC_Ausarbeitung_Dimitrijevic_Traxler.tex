@@ -172,13 +172,29 @@
 					Der Chord Algorithmus legt alle möglichen Hashwerte in einem Kreis ab. Jede Komponente muss nun wissen wo sie die Datensätze findet für die sie selbst zuständig ist (Für N8 Beispielsweiße K58-K8) und eine gewisse Anzahl anderer Komponenten nach folgendem Schema:\\
 					'Each node maintains a routing table, the finger table, poiting to other nodes on the identifier circle. Given a circle with l-bit identfiers, a finger table has a maximum of l entries. On node n, the table entry at row i identifies the first node that succeeds n by at least $2^{i-1}$, i.e., successor $n+{2}^{i-1}$, where $1 <= i <= l$. For example, the second finder of node N8 $(8+2^1=10)$ is node 10 and the third finder $(8+2^2=12)$ is node 15' Wobei zu beachten ist,dass N15 für den Bereich der Keys 11 bis 15 zuständig ist. %TODO Zitieren.
 					\\Dadurch ergeben sich selbst bei großen Speicher-Spaces (zB. 256 Bit) relativ kleine Finger Tables nur und somit auch nur kleiner Speicheraufwand zum Routing und erreichen aller Datensätze. Das Routing selbst wird immer genauer je näher man dem gewünschten Key kommt, die Anzahl der Routing-schritte befindet nicht daher im Bereich von O(log(N)). \\
-					Würde N8 in unserem Beispiel \label{fig:Chord} K38 erreichen wollen so würde er den näherstehen vorhergehenden Node im Figure Table fragen, d.h. N24. N24 würde das selbe nun wieder machen, daher die Anfrage zu N35 weiterschicken. Bei N35 ist der näherste Node zu K38 ident mit dem ersten Node im Figur Table (N43), N35 würde N8 daher nun eine Nachricht schicken dass N43 für K38 zuständig ist. Würde N8 dagegen K51 wissen wollen wären die Schritte N43-N48 und dieser würde dann N57 als Antwort schicken.\\
+					Würde N8 in unserem Beispiel (Abb.:\ref{fig:Chord}) K38 erreichen wollen so würde er den näherstehen vorhergehenden Node im Figure Table fragen, d.h. N24. N24 würde das selbe nun wieder machen, daher die Anfrage zu N35 weiterschicken. Bei N35 ist der näherste Node zu K38 ident mit dem ersten Node im Figur Table (N43), N35 würde N8 daher nun eine Nachricht schicken dass N43 für K38 zuständig ist. Würde N8 dagegen K51 wissen wollen wären die Schritte N43-N48 und dieser würde dann N57 als Antwort schicken.\\
 					In einem Chord netzwerk mit 1000 Komponenenten werden ungefähr O(10) Schritte gebraucht um die zuständige Komponente für den gesuchten Key zu finden. Der Chord Algorithmus hat außerdem die Möglichkeit zur Selbstorganisation bei neu hinzukommenenden Komponenten und Komponentenausfall
 					%TODO Reference Steinmetz Seite 97
 					
 					
 				\subsubsection{CAN Algorithmus}
-	
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=0.7\linewidth]{./graphics/CAN}
+						\caption{}
+						\label{fig:CAN}
+					\end{figure}
+					Der CAN Algorithmus ist der zweite hier vorgestellte Algorithmus für DHT bzw. strukturiertes p2p. Er ist dem Chord algorithmus sehr ähnlich hat jedoch zwei sehr große Unterschiede. Der erste ist, dass jede Komponente nur mit ihrem direkten Nachbarn kommuniziert wenn ein bestimmtes Element gesucht ist (durch die Strukturierung ist die Richtung bekannt), der zweite Unterschied ist die Lösung aus der eindimensionalen Kante eines Kreises hin zur n-dimensionalen Identifizierung von Daten. \\
+					In unserem Beispiel handelt es sich um einen zweidimensionalen 6-Bit Space der unter 4 Komponenten (A-D) aufgeteilt ist. Bei diesem System speichert jede Komponente ab welcher Nachbar für die gesuchte Koordinate zuständig ist. Außerdem werden die Dimensionen nacheinander durch gegangen.
+					\\In Abbildung \ref{fig:CAN_Routing} wird beispielsweise die Y-Achse zuerst abgearbeitet. Allerdings ist es nicht zwingend notwendig das alle Komponenten die Dimensionen in der selben Reihenfolge abarbeiten. Das Routing in Abbildung \ref{fig:CAN_Routing} könnte genauso gut auch über N5 statt N6 stattfinden. Wird bei N1 wie abgebildet die Y-Achse zuerst abgearbeitet muss dieser nur folgende drei Einträge abspeichern um durch den gesamten Space routen zu können: N6 ist Zuständig für die gesamte x-Dimension wenn y kleiner N1, N2 ist für die gesamte x-Dimension größer N1 zuständig wenn y ident N1, N5 ist für die gesamte x-Dimension kleiner N1 zuständig wenn y ident N1.\\
+					Die schlussendliche tatsächlich Effizienz des Algorithmus gegenüber anderen Algorithmen hängt sehr stark von dem Verhältnis der Anzahl der Komponenten zur Anzahl der Dimensionen ab. Die exakte Größenordnung für die Anzahl der Routingschritte und der Anzahl der Notwendigen Nachrichten bei einer neuen Komponente ist O($(D/2)*N^{1/D}$), die Größenordnung für die Anzahl an notwendigen Einträgen zum Routing per Node und der notwendigen Nachrichten beim entfernen einer Komponente ist O(2*D).
+					\begin{figure}
+						\centering
+						\includegraphics[width=0.55\linewidth]{./graphics/CAN_Routing}
+						\caption{Routing in einem zweidimensionalen CAN-Space}
+						\label{fig:CAN_Routing}
+					\end{figure}
+					 
 \chapter{Namhafte Implementierungen}
 	\section{JavaSpaces}
 		JavaSpaces ist eine Spezifikation des Konzepts Object Spaces in der Programmiersprache Java. Ein Object Space ist hierbei ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen "aktiven, verteilten Datenraum", wie er in keiner anderen Technologie geschaffen wird (traditionelles Grid-Computing). Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.
