@@ -187,7 +187,7 @@
 					 
 \chapter{Namhafte Implementierungen}
 	\section{JavaSpaces}
-		JavaSpaces ist eine Spezifikation des Konzepts Object-Spaces in der Programmiersprache Java. Ein Object-Space ist ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen "aktiven, verteilten Datenraum", wie er in keiner anderen Technologie geschaffen wird. Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.\\\\	
+		JavaSpaces ist eine Spezifikation des Konzepts von Object-Spaces in der Programmiersprache Java. Ein Object-Space ist ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen "aktiven, verteilten Datenraum", wie er in keiner anderen Technologie geschaffen wird. Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.\\\\	
 		Die Gründe, warum JavaSpaces eingesetzt werden, sind vielfältig. Meist wird Skalierbarkeit und Verfügbarkeit bei gleichzeitiger Reduzierung der Gesamtkomplexität angestrebt.
 		
 		
@@ -237,7 +237,7 @@
 		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware Technology die Daten in “Container” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die Ausfallwahrscheinlichkeit der Daten reduziert.\\
 		
 		XVSM ist ein Virtual Shared Memory dessen Funktionalitäten sehr leicht durch Software Entwicklern erweitert werden kann. Man kann nicht davon ausgehen, dass eine Middleware alle Funktionalitäten bietet die man braucht und man wird nicht ein Produkt nutzen das nicht die benötigten Funktionalitäten hat, oder eine Middleware benutzen die überladen ist.\\
-		Mit XVSM kann man es so Konfigurieren, dass die gewünschten Funktionen hinzufügt werden(Plugable Komponents) oder, entfernt werden können wenn sie unerwünscht sind.(In der Graphik dargestellt durch die Gelben Elemente)\\
+		Mit XVSM kann man es so Konfigurieren, dass die gewünschten Funktionen hinzufügt werden(Plugable Komponents) wenn man dies wünscht/braucht.(In der Graphik dargestellt durch die Gelben Elemente)\\
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=0.7\linewidth]{./08570620af}
@@ -258,11 +258,11 @@
 		
 		
 		\section{TinySpaces}
-			Tinyspaces setzt auf das XVSM Prinzip auf und benutzt das .Net Framework. Da es bei dem XVSM Prinzip noch nicht vollkommen mit allen Implementierungen kompatibel war erschuf man Tinyspaces. 
+			Tinyspaces setzt auf das XVSM Prinzip auf und benutzt das .Net Framework. Da es bei dem XVSM Prinzip noch nicht vollkommen mit allen Implementierungen kompatibel war(z.B für embeded devices nicht perfomant genug) erschuf man Tinyspaces. 
 			TinySpaces soll es erleichtern mit SBC zu arbeiten, da es unnötige schichten entfernt. 
 			TinySpaces nutzt die Unterstützung von Contracts die sagen wie man ein bestimmtes Interface ansprechen soll.
-			Durch die Nutzung von Contracts ist es möglich die angesprochenen Komponenten zu ändern. Da man bei der Programmierung der Applikation darauf zielen sollte das Alle Komponenten auf denn Contract aufbauen sollten.\\
-			TinySpaces setzt auf CAPI-1 auf damit man die Komponenten während der Laufzeit wechseln kann.
+			Durch die Nutzung von Contracts ist es möglich die Komponenten zu ändern/ersetzen und der Benutzer muss nur denn Contract kennen um zu wissen wie er mit der Komponente interagieren muss. Da man bei der Programmierung der Applikation darauf zielen sollte das Alle Komponenten auf denn Contract aufbauen sollten.\\
+		
 		\section{GSpaces}
 		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel, benutzt diese aber mit Replikationsrichtlinien.  Bei einem Aufruf wird ein lokaler Aufrufverarbeiter aufgerufen und es wird nachgeschaut welche Operation ausgeführt werden muss. Bei  einem Aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager geleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie basiert wird einfach die read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
 	
