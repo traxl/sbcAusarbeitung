@@ -53,7 +53,7 @@
 			\item Referenzierung
 				\subitem Applikation die miteinander Kommunizieren müssen nicht tatsächlich voneinander wissen.
 		\end{itemize}
-		Durch diese Aufteilung sind die Applikation tatsächlich voneinander unabhängig, ändert sich nun an einer Applikation etwas (Ort, Ausführungszeit etc.) so ist dies für die andere gänzlich irrelevant (abgesehen von sich ändernden Inhalt) solange sich der Space auf den beide zugreifen und über welchen sie Kommunizieren der gleiche bleibt. Auch wenn zu einem späteren Zeitpunkt weitere Applikation hinzugefügt werden, so ist das (erneut, ausgenommen Nachrichteninhalt) für die ersten beiden Applikation insofern irrelevant als das man an ihnen nichts ändern muss deswegen. Zu beachten ist jedoch dass so keine direkte Kommunikation mehr stattfindet und daher auch keine direkte Reaktion zu erwarten ist in der Regel. (Ausgenommen es werden notifies aus geschickt)
+		Durch diese Aufteilung sind die Applikation tatsächlich voneinander unabhängig, ändert sich nun an einer Applikation etwas (Ort, Ausführungszeit etc.) so ist dies für die andere gänzlich irrelevant (abgesehen von sich ändernden Inhalt) solange sich der Space auf den beide zugreifen und über welchen sie Kommunizieren der gleiche bleibt. Auch wenn zu einem späteren Zeitpunkt weitere Applikation hinzugefügt werden, so ist das (erneut, ausgenommen Nachrichteninhalt) für die ersten beiden Applikation insofern irrelevant als das man an ihnen nichts ändern muss deswegen. Zu beachten ist jedoch dass so keine direkte Kommunikation mehr stattfindet und daher auch keine direkte Reaktion zu erwarten ist in der Regel. (Ausgenommen es werden Notifies aus geschickt)
 		
 		
 		
@@ -63,30 +63,21 @@
 	
 \chapter{Im genaueren betrachtet}
 	\section{Tuple Spaces}
-		Tuple Spaces
 		
-		Ein Tupel Raum ist eine Ausführung des assoziativen Gedächtnisses Modell für verteiltes / paralleles Verarbeiten. Es bietet eine Bibliothek von Tupeln, auf  die gleichzeitig zugegriffen werden kann. Tupel sind Mengen, mit null oder mehr Argumente und einem Schlüssel. 
-		
-		
-		Die Sammlung von Tupeln unterstützt einige Grundfunktionen, wie zB das Hinzufügen eines Tupels in den Raum (Schreiben) und Entfernen eines Tupels aus dem Raum (nehmen). Das Tupel Sammlung wird von einem Netzwerk über mehrere Server aufbewahrt und gemanaged. Mehrere Threads können  zur selben Zeit auf den selben Raum zugreifen.
-		
-		Nun gehen wir ein wenig auf Linda ein.
+		Ein Tupel Raum ist eine Ausführung des assoziativen Gedächtnisses Modell für verteiltes / paralleles Verarbeiten. Es bietet eine Bibliothek von Tupeln, auf  die gleichzeitig zugegriffen werden kann. Tupel sind Mengen, mit null oder mehr Argumente und einem Schlüssel. \\		
+		Die Sammlung von Tupeln unterstützt einige Grundfunktionen, wie zB das Hinzufügen eines Tupels in den Raum (Schreiben) und Entfernen eines Tupels aus dem Raum (nehmen). Das Tupel Sammlung wird von einem Netzwerk über mehrere Server aufbewahrt und gemanaged. Mehrere Threads können zur selben Zeit auf den selben Raum zugreifen.
 		
 		\subsection{Linda}
-		Ziel von Linda ist es, Prozessen einer Anwendung zu erlauben, miteinander zu kommunizieren, ohne identifikations Informationen des Datensatzes zu wissen. Linda geht von einem Tupelraum  als Umgebung aus. Verschiedene nebenläufige Prozesse eines verteilten Programms kommunizieren über einen gemeinsamen Tupelraum dadurch, dass jeder dieser Prozesse diesem Tupelraum beliebig Tupel hinzufügen und Tupel daraus entfernen kann.
-		
-		
-		
+		Ziel von Linda ist es, Prozessen einer Anwendung zu erlauben, miteinander zu kommunizieren, ohne Informationen zur Identifikation des Datensatzes zu wissen. Linda geht von einem Tupelraum  als Umgebung aus. Verschiedene nebenläufige Prozesse eines verteilten Programms kommunizieren über einen gemeinsamen Tupelraum dadurch, dass jeder dieser Prozesse diesem Tupelraum beliebig Tupel hinzufügen und Tupel daraus entfernen kann.\\\\	
 		Die daraus resultierende zeitliche und räumliche Entkoppelung ermöglicht einen Entwurf verteilter Protokolle, die flexibel und robust auf die Herausforderungen verteilter Programmierung reagieren können wie z.B auf Latenz, erhöhten Synchronisationsaufwand und mögliche Teilausfälle des Systems. 
 		
 		
 		\section{Triple Spaces}
 		
-		Bis jetzt werden die meisten "Messages" dirket zwischen den Machinen ausgetauscht. Triple Space Computing möchte das die Daten in einen
-		Space geschrieben wird und das jeder auf die Elemente des Spaces zugreifen kann und diese lesen/schreiben/entnehmen kann.\\
-		Zitat:" In der Zukunft könnte Triple space Computing das Web für die Machinene werden wie HTML das Web für Menschen geworden ist".\\ \\
-		Triple Space Computing bietet einen Kommunikations Paradigmas des anonymen und asynchronen Informations Austausch und ebenfalls die 
-		Persistenz und Einzigartige Identifikation von Daten.\\
+		Bis jetzt werden die meisten "Messages" direkt zwischen den Maschinen ausgetauscht. Triple Space Computing möchte das die Daten in einen
+		Space geschrieben werden und das jeder auf die Elemente des Spaces zugreifen kann und diese lesen/schreiben/entnehmen kann.\\ %TODO Zitat
+		Zitat:" In der Zukunft könnte Triple space Computing das Web für die Maschine werden wie HTML das Web für Menschen geworden ist".\\ \\
+		Triple Space Computing bietet ein Kommunikationsparadigma für anonymen und asynchronen Informationsaustausch und ebenfalls die Persistenz und einzigartige Identifikation von Daten.\\
 			
 		
 
@@ -101,14 +92,14 @@
 \includegraphics[width=0.7\linewidth]{./Semantic_Web_www_tripcom_org_docs_coordination07_paper}
 \caption{}
 \label{fig:Semantic_Web_www_tripcom_org_docs_coordination07_paper}
-\end{figure}
+\end{figure} %TODO Caption einfügen
 		
 		
 	
-		
-		Die Semnatische Web Technologie ist eine erweiterung des heutigen Webs in dem die Informationen eine gut definierte, Maschinel verarbeitbare Bedeutung und ein ermöglicht es Maschinen und Menschen leicht zu Co-Operieren.\\
-		Es ist gedacht das um das Web mit einem Netzwerk von adressierbare URI Informationen, diese sind so verlinkt und vorgestellt das es Maschinen leicht gemacht wird sowohl syntactisch und semantisch darauf zuzugreifen.
-		Für diesen Zweck sollten die Ressourcen mit maschinen verständlciehn metadaten versehen das standatisiert ist durch verwendung von Allgemeinem Vocabular und einer vordefinierten Semantic auch bekannt als "Ontologie"
+		%TODO Deutsch machen, ich versteh nich was es bedeuten soll
+		Die Semantische Web Technologie ist eine Erweiterung des heutigen Webs in dem die Informationen eine gut definierte, maschinell verarbeitete Bedeutung haben und es ermöglicht Maschinen und Menschen leicht zu Co-Operieren.\\
+		Es ist gedacht das um das Web mit einem Netzwerk von adressierbare URI Informationen, diese sind so verlinkt und vorgestellt das es Maschinen leicht gemacht wird sowohl syntaktisch und semantisch darauf zuzugreifen.
+		Für diesen Zweck sollten die Ressourcen mit Maschinen verständlichen Metadaten versehen das standardisiert ist durch Verwendung von Allgemeinem Vokabular und einer vordefinierten Semantik auch bekannt als "Ontologie"
 		\\
 	
 
@@ -124,7 +115,7 @@
 		
 		\section{Reliable Message}
 			
-			Reliable Message verhält sich wie Tuple Space computing. Nur das man hier nicht von Tuples spricht sondern von Messages.  Die Reliable Message Technologie geht von mehreren Channels aus die die geteilten Daten beinhalten und jeder dieser Channel kann von einem oder mehreren Server „unterstützt“ werde d.H.  das die geteilten Daten auf einem oder mehreren Servern liegen und damit abgesichert werden können. 
+			Reliable Message verhält sich wie Tuple Space computing. Nur, dass man hier nicht von Tuples spricht sondern von Messages.  Die Reliable Message Technologie geht von mehreren Channels aus die die geteilte Daten beinhalten und jeder dieser Channel kann von einem oder mehreren Server „unterstützt“ werden d.H. die geteilten Daten liegen auf einem oder mehreren Servern und können damit abgesichert werden. 
 		
 		\section{Peer-to-Peer Architekturen}
 			
@@ -195,21 +186,20 @@
 					 
 \chapter{Namhafte Implementierungen}
 	\section{JavaSpaces}
-		JavaSpaces ist eine Spezifikation des Konzepts Object Spaces in der Programmiersprache Java. Ein Object Space ist hierbei ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen "aktiven, verteilten Datenraum", wie er in keiner anderen Technologie geschaffen wird (traditionelles Grid-Computing). Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.
-		
+		JavaSpaces ist eine Spezifikation des Konzepts Object-Spaces in der Programmiersprache Java. Ein Object-Space ist hierbei ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen "aktiven, verteilten Datenraum", wie er in keiner anderen Technologie geschaffen wird (traditionelles Grid-Computing). Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.\\\\	
 		Die Gründe, warum JavaSpaces eingesetzt werden, sind vielfältig. Meist wird Skalierbarkeit und Verfügbarkeit bei gleichzeitiger Reduzierung der Gesamtkomplexität angestrebt.
 		
 		
-		\section{Corso}
+		\section{Corso} %TODO bitte noch ein wenig besser Formatieren
 			Corso( Co-ORdinated Shared Objects) basiert auf Forschungsarbeiten der Technischen Uni Wien.
 			Software Entwicklung in heterogenen verteilten Systemen bringt immer zusätzlich Komplexität.\\
-			•	Die Addressierung und Lokalisierung von Ressourcen\\
+			•	Die Adressierung und Lokalisierung von Ressourcen\\
 			•	Replikation: Verwalten von Daten Kopien an verschiedenen Orten\\
 			•	Transaktion\\
 			•	Skalierbarkeit: Die Möglichkeit der Erweiterung des Systems im Zuge der wachsenden Anforderung und Belastung des Systems.\\
 			•	Lastverteilung\\
-			•	Ausfahlsicherheit\\
-			Corso ist eine Middleware die auf dem MOM(Message Oriented Middleware) Prinzip aufbaut. Corso nimmt sich als Middleware der oben genanten Problemen an und erleichtert es dem Entwickler da er sich nicht um diese kümmern muss. Corso erleichtert die Addressierung und vereinfacht das arbeiten mit Spaces.\\
+			•	Ausfallsicherheit\\
+			Corso ist eine Middleware die auf dem MOM(Message Oriented Middleware) Prinzip aufbaut. Corso nimmt sich als Middleware der oben genanten Problemen an und erleichtert es dem Entwickler da er sich nicht um diese kümmern muss. Corso erleichtert die Adressierung und vereinfacht das arbeiten mit Spaces.\\
 			
 			\subsection{Koordinationsmodell}
 			
@@ -219,12 +209,12 @@
 			\item Wiederherstellbarkeit und Flexible Koordinationspatterns.
 			\end{itemize}
 			
-			Im Corso Modell kommunizieren autonome Services über gemeinsam genutzte verteilte Objekte. Jedes dieser Objekte hat eine OID(Object IDentifikation) und ist dadurch eindeutig im Netz identifizierbar.
+			Im Corso Modell kommunizieren autonome Services über gemeinsam genutzte verteilte Objekte. Jedes dieser Objekte hat eine OID(Object Identification) und ist dadurch eindeutig im Netz identifizierbar.
 			
-			Die Objekte werden von Agenten überwacht. Diese Agenten sollen sicherstellen das alle Daten konsisten sind. Das heißt Transaktionen werden atomar gemacht und entweder ganz oder garnicht ausgeführt.
+			Die Objekte werden von Agenten überwacht. Diese Agenten sollen sicherstellen das alle Daten konsistent sind. Das heißt Transaktionen werden atomar gemacht und entweder ganz oder gar nicht ausgeführt.
 			
 			Die Nebenläufigkeit wird mit Corso Prozessen sichergestellt. Die Prozesse habe eine bestimmte Aufgabe und diese werden entweder durch Systemprozesse oder Threads realisiert.
-			Corso Prozesse unterstützen den Austasch von Objekten da man nur zugriff auf Objekte hat die eine Gehören, ein subObjekt eines erstellten Objektes ist oder man die Referent auf dieses Objekts besitzt.
+			Corso Prozesse unterstützen den Austausch von Objekten da man nur zugriff auf Objekte hat die eine Gehören, ein sub-Objekt eines erstellten Objektes ist oder man die Referent auf dieses Objekts besitzt.
 			Das heißt Objekte benötigen eine Autorisierung.
 			
 			
@@ -233,7 +223,7 @@
 			\subsection{Virtual shared Memory}
 			
 			
-			Ein Virtual Shared Memory stellt einen freigegeben Datenraum für die Kommunikation und Zusammenarbeit von mehreren Autonomen System Komponenten zur Verfügung, auch genant Peers. Peers können ihre Anfragen in diesen Datenraum schreiben, als auch User und Nutzdaten, die für die Arbeit erfoderlich sind.
+			Ein Virtual Shared Memory stellt einen freigegeben Datenraum für die Kommunikation und Zusammenarbeit von mehreren Autonomen System Komponenten zur Verfügung, auch genant Peers. Peers können ihre Anfragen in diesen Datenraum schreiben, als auch User und Nutzdaten, die für die Arbeit erforderlich sind.
 			Das Konzept des Virtual Shared Memory ist aus dem Parallel Computing bereits bekannt und anerkannt.\\
 			Das Virtual Shared Memory Ansatz ermöglicht es autonomen Arbeitern miteinander zu im Virtuellen Datenraum zu interagieren.\\
 			Das heißt das alle arbeitenden Peers haben Zugriff auf die geteilten(verteilten) Daten in einem gut strukturiertem, sicheren, virtuellen Speicher.
@@ -246,7 +236,7 @@
 		XVSM (eXtensible Virtual Shared Memory). XVSM ist eine Middleware Technology die Daten in “Container” speichert  und für andere Peers teilt. Dieser Weg bringt einige Vorteile wie die Daten werden auf mehreren verschiedenen Computern verteilt, damit wird die Ausfallwahrscheinlichkeit der Daten reduziert.\\
 		
 		XVSM ist ein Virtual Shared Memory dessen Funktionalitäten sehr leicht durch Software Entwicklern, der durch die Verwendung von Aspekten, erweitert werden kann. Man kann nicht davon ausgehen das eine Middleware alle Funktionalitäten bieten kann und man wird nicht ein Produkt nutzen das nicht die benötigten Funktionalitäten hat und man wird nicht gerne eine Middleware nutzen die überladen ist.\\
-		Mit XVSM kann man es so Konfigurieren, dass die gewünschten Funktionen hinzufügt werden(Pluggable Komponents) oder, wegnehmen wenn ungewünscht sind.(In der Graphik dargestellt durch die Gelben Elemente)\\
+		Mit XVSM kann man es so Konfigurieren, dass die gewünschten Funktionen hinzufügt werden(Plugable Komponents) oder, entfernen wenn sie unerwünscht sind.(In der Graphik dargestellt durch die Gelben Elemente)\\
 		\begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{./08570620af}
@@ -255,7 +245,7 @@
 \end{figure}
 
 		
-		Unterschied zum Linda(JavaSpaces)Ansatz ist, dass die Daten in Container gespeichert werden und nicht direkt in den Space und die Daten mit einträgen, coordinaten und containern leichter gefunden werden können.
+		Unterschied zum Linda(JavaSpaces)Ansatz ist, dass die Daten in Container gespeichert werden und nicht direkt in den Space und die Daten mit Einträgen, Koordinaten und Containern leichter gefunden werden können.
 		XVSM integriert das Konzept von Peer-2-Peer Netzwerken um ein Verteiltes Geteilten Space zu erzeugen.
 		
 		\subsection{Implementierungen}
@@ -267,13 +257,13 @@
 		
 		
 		\section{TinySpaces}
-			Tinyspaces setzt auf das XVSM prinzip auf und benutzt das .Net Framework. Da es bei dem XVSM Prinzip noch nicht vollkommen mit allen Implementierungen kompatibel war erschuf man Tinyspaces. 
-			TinySpaces soll es erleichtern mit space based computing zu arbeiten. Da es unnötige schichten entfernt. 
-			TinySpaces nutzt die unterstützung von Contracts die sagen wie man ein bestimmtes Interface ansprechen soll.
-			Durch die Nutzung von Contracts ist es möglich die angesprochenen Componenten zu ändern. Da man bei der Programmierung der Aplication darauf zielen sollte das Alle Componenten auf denn Contract aufbauen sollten.
-			TinySpaces setzt auf CAPI-1 auf damit sie denn Wechsel von Componenten während der Laufzeit zu ändern.
+			Tinyspaces setzt auf das XVSM Prinzip auf und benutzt das .Net Framework. Da es bei dem XVSM Prinzip noch nicht vollkommen mit allen Implementierungen kompatibel war erschuf man Tinyspaces. 
+			TinySpaces soll es erleichtern mit SBC zu arbeiten. Da es unnötige schichten entfernt. 
+			TinySpaces nutzt die Unterstützung von Contracts die sagen wie man ein bestimmtes Interface ansprechen soll.
+			Durch die Nutzung von Contracts ist es möglich die angesprochenen Komponenten zu ändern. Da man bei der Programmierung der Applikation darauf zielen sollte das Alle Komponenten auf denn Contract aufbauen sollten.
+			TinySpaces setzt auf CAPI-1 auf damit sie denn Wechsel von Komponenten während der Laufzeit zu ändern.
 		\section{GSpaces}
-		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel, benutzt diese aber mit Replikationsrichtlinien.  Bei einem Aufruf wird ein lokaler Aufrufshändler aufgerufen und es wird nachgeschaut welche Operation ausgeführt werden muss. Bei  einem Aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager weitergeleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie herrscht wird dann einfach die Read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
+		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel, benutzt diese aber mit Replikationsrichtlinien.  Bei einem Aufruf wird ein lokaler Aufrufverarbeiter aufgerufen und es wird nachgeschaut welche Operation ausgeführt werden muss. Bei  einem Aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager weitergeleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie herrscht wird dann einfach die read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
 	
 \chapter{Conclusio}
 
