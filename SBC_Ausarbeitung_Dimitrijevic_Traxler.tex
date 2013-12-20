@@ -64,7 +64,7 @@
 \chapter{Im Genaueren betrachtet}
 	\section{Tuple Spaces}
 		
-		Ein Tupel Raum ist eine Ausführung des assoziativen Gedächtnisses Modell für verteiltes / paralleles Verarbeiten. Es bietet eine Bibliothek von Tupeln, auf  die gleichzeitig zugegriffen werden kann. Tupel sind Mengen, mit null oder mehr Argumente und einem Schlüssel. \\		
+		Ein Tupel Raum ist eine Ausführung des assoziativen Gedächtnissmodelles für verteiltes / parallele Verarbeitung. Es bietet eine Bibliothek von Tupeln, auf  die gleichzeitig zugegriffen werden kann. Tupel sind Mengen, mit null oder mehr Argumente und einem Schlüssel. \\		
 		Die Sammlung von Tupeln unterstützt einige Grundfunktionen, wie zB das Hinzufügen eines Tupels in den Raum (Schreiben) und Entfernen eines Tupels aus dem Raum (nehmen). Das Tupel Sammlung wird von einem Netzwerk über mehrere Server aufbewahrt und gemanaged. Mehrere Threads können zur selben Zeit auf den selben Raum zugreifen.
 		
 		\subsection{Linda}
@@ -76,7 +76,7 @@
 		
 		Bis jetzt werden die meisten "Messages" direkt zwischen den Maschinen ausgetauscht. Triple Space Computing möchte das die Daten in einen
 		Space geschrieben werden und das jeder auf die Elemente des Spaces zugreifen kann und diese lesen/schreiben/entnehmen kann.\\ %TODO Zitat
-		" In der Zukunft könnte Triple space Computing das Web für die Maschine werden wie HTML das Web für Menschen geworden ist"\lbrack Zitat: http://www.tripcom.org/\rbrack.\\ \\
+		'In der Zukunft könnte Triple space Computing das Web für die Maschine werden wie HTML das Web für Menschen geworden ist'\lbrack Zitat: http://www.tripcom.org/\rbrack.\\ \\
 		Triple Space Computing bietet ein Kommunikationsparadigma für anonymen und asynchronen Informationsaustausch und ebenfalls die Persistenz und einzigartige Identifikation von Daten.\\
 			
 		
@@ -191,7 +191,7 @@
 					 
 \chapter{Namhafte Implementierungen}
 	\section{JavaSpaces}
-		JavaSpaces ist eine Spezifikation des Konzepts von Object-Spaces in der Programmiersprache Java. Ein Object-Space ist ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen "aktiven, verteilten Datenraum", wie er in keiner anderen Technologie geschaffen wird. Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.\\\\	
+		JavaSpaces ist eine Spezifikation des Konzepts von Object-Spaces in der Programmiersprache Java. Ein Object-Space ist ein assoziativer Speicher von verteilten, über das Netz erreichbaren Objekten. Kommunikationspartner (peers) kommunizieren ausschließlich indirekt über diese Objekte. Dadurch etabliert der JavaSpace einen 'aktiven, verteilten Datenraum', wie er in keiner anderen Technologie geschaffen wird. Einige Ansätze der Jini-Technologie kommen hierbei zur Anwendung. Bei der Idee, die sich hinter den JavaSpaces verbirgt, handelt es sich nicht um eine revolutionäre Neuerung, sondern sie basiert im Wesentlichen auf den Linda TupelSpaces.\\\\	
 		Die Gründe, warum JavaSpaces eingesetzt werden, sind vielfältig. Meist wird Skalierbarkeit und Verfügbarkeit bei gleichzeitiger Reduzierung der Gesamtkomplexität angestrebt.
 		
 		
@@ -266,41 +266,31 @@
 			Tinyspaces setzt auf das XVSM Prinzip auf und benutzt das .Net Framework. Da es bei dem XVSM Prinzip noch nicht vollkommen mit allen Implementierungen kompatibel war(z.B für embeded devices nicht perfomant genug) erschuf man Tinyspaces. 
 			TinySpaces soll es erleichtern mit SBC zu arbeiten, da es unnötige schichten entfernt. 
 			TinySpaces nutzt die Unterstützung von Contracts die sagen wie man ein bestimmtes Interface ansprechen soll.
-			Durch die Nutzung von Contracts ist es möglich die Komponenten zu ändern/ersetzen und der Benutzer muss nur denn Contract kennen um zu wissen wie er mit der Komponente interagieren muss. Da man bei der Programmierung der Applikation darauf zielen sollte das Alle Komponenten auf denn Contract aufbauen sollten.\\
+			Durch die Nutzung von Contracts ist es möglich die Komponenten zu ändern/ersetzen und der Benutzer muss nur denn Contract kennen um zu wissen wie er mit der Komponente interagieren muss. Da man bei der Programmierung der Applikation darauf zielen sollte das alle Komponenten auf denn Contract aufbauen sollten.\\
 		
 		\section{GSpaces}
 		Geht von dem selben Ansatz aus wie JavaSpaces(Tuple Spaces) hat aber einen großen Unterschied. GSpaces hat zwar Tupel, benutzt diese aber mit Replikationsrichtlinien.  Bei einem Aufruf wird ein lokaler Aufrufverarbeiter aufgerufen und es wird nachgeschaut welche Operation ausgeführt werden muss. Bei  einem Aufruf wird erst mal nachgeschaut welche Richtlinien angewendet werden müssen. Nachdem man die Auswahl getroffen hat wird die Anfrage weiter an einen Verteilungsmanager geleitet.  Wenn dann zB gelesen werden soll und es auf Master-Slave-Richtlinie basiert wird einfach die read Operation auf dem lokalem Datensatz(Slice) gelesen. Falls es aber eine write Operation ist muss der Verteilungsmanager beim Master Server anfragen ob er schreiben darf und dann kann er erst weiter schreiben.	
 	
-\chapter{Conclusio}
-
 \chapter{Quellen}
 	Primärquellen:\\
-	\lbrack 21\rbrack Tannenbaum \\
-	\lbrack 22\rbrack Steinmetz\\
-	\lbrack 23\rbrack http://www.spacebasedcomputing.org/ \\
-	\lbrack 0\rbrack http://tripcom.org/\\ \\
+	\lbrack 14\rbrack Verteilete Systeme Prinzipien und Paradigmen, A. Tannenbaum, 2. Auflage \\
+	\lbrack 15\rbrack Peer-toPeer Systems and Applications 2005, R. Steinmetz,K. Wehrle\\
+	\lbrack 16\rbrack http://www.spacebasedcomputing.org/, Aufgerufen am 13.12.2013\\
 	
 	Sekundärquellen:\\
 	\lbrack 1\rbrack http://www.nik.no/2002/Engelhardtsen.pdf \\
-	\lbrack 2\rbrack (Diplomarbeit,Integration von Corso Space-Based Computing in J2EE,Johannes Marchart)\\
-	\lbrack 3\rbrack(Diplomarbeit,Design and Implementation of JavaSpaces API Standart for XSVM, Laszlo Keszthelyi)\\
+	\lbrack 2\rbrack Diplomarbeit,Integration von Corso Space-Based Computing in J2EE,Johannes Marchart\\
+	\lbrack 3\rbrack Diplomarbeit,Design and Implementation of JavaSpaces API Standart for XSVM, Laszlo Keszthelyi\\
 	\lbrack 4\rbrack http://wiki.gigaspaces.com/wiki/display/XAP9/Terminology+-+Space-Based+Architecture\\
 	\lbrack 5\rbrack http://www.slideshare.net/amin59/an-introduction-to-space-based-architecture\\
 	\lbrack 6\rbrack http://www.gigaspaces.com/WhitePapers\#a1 \\
-	\lbrack 7\rbrack http://dspace.cusat.ac.in/xmlui/handle/123456789/258 \\
-	\lbrack 8\rbrack (Diplomarbeiten, Design and Implementation of TinySpaces, Alexander Marek) \\
-	\lbrack 9\rbrack http://www.spacebasedcomputing.org/fileadmin/files/SBC-Paradigm-v1.0.pdf \\
-	\lbrack 10\rbrack http://elib.uni-stuttgart.de/opus/volltexte/2006/2580/pdf/TR\_2006\_05.pdf \\
-	\lbrack 11\rbrack http://www.wsmo.org/TR/d21/v0.1/20050613/d21.v01.pdf \\
-	\lbrack 12\rbrack http://www.mozartspaces.org/2.2-SNAPSHOT/docs/MozartSpaces\_DA\_Martin-Barisits.pdf \\
-	\lbrack 13\rbrack http://www.dre.vanderbilt.edu/~gokhale/WWW/papers/isorc-2013.pdf \\
-	\lbrack 14\rbrack http://iopscience.iop.org/1742-6596/331/6/062018 \\
-	\lbrack 15\rbrack http://iopscience.iop.org/1742-6596/396/3/032045 \\
-	\lbrack 16\rbrack http://inderscience.metapress.com/content/26k1524234h03536/ \\
-	\lbrack 17\rbrack(Dissertation, Managing Complex and Dynamic Software Systems with Space-Based Computing, Richard Mordinyi) \\
-	\lbrack 18\rbrack http://dl.acm.org/citation.cfm?id=1555281 \\
-	\lbrack 19\rbrack Peer-toPeer Systems and Applications 2005 \\
-	\lbrack 20\rbrack Peer-to-Peer Systems III 2005 \\
+	\lbrack 7\rbrack Diplomarbeit, Design and Implementation of TinySpaces, Alexander Marek \\
+	\lbrack 8\rbrack http://www.spacebasedcomputing.org/fileadmin/files/SBC-Paradigm-v1.0.pdf \\
+	\lbrack 9\rbrack http://elib.uni-stuttgart.de/opus/volltexte/2006/2580/pdf/TR\_2006\_05.pdf \\
+	\lbrack 10\rbrack http://www.wsmo.org/TR/d21/v0.1/20050613/d21.v01.pdf \\
+	\lbrack 11\rbrack http://www.mozartspaces.org/2.2-SNAPSHOT/docs/MozartSpaces\_DA\_Martin-Barisits.pdf \\
+	\lbrack 12\rbrack Dissertation, Managing Complex and Dynamic Software Systems with Space-Based Computing, Richard Mordinyi \\
+	\lbrack 13\rbrack Peer-to-Peer Systems III 2005, G. Voelker, S Shenker \\
 	
 
 \end{document}
